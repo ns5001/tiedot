@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   resources :contacts
   resources :comments
   resources :graphs
-  root "welcomes#index", as: "root"
+
+  root :to =>'welcome#home'
+
 end
