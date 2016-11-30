@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class UsersController < ApplicationController
   def new
   end
 
@@ -7,10 +7,10 @@ class ContactsController < ApplicationController
   end
 
   def show
-    @contact = Contact.find(params[:id])
+    @user = User.find(params[:id])
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @contact}
+      format.json { render json: @user}
     end
   end
 
@@ -18,11 +18,11 @@ class ContactsController < ApplicationController
   end
 
   def index
-    @contacts = Contact.all
+    @users = User.all
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @contacts}
+      format.json { render json: @users}
     end
   end
-  
+
 end
