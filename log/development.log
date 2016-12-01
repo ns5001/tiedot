@@ -638,3 +638,752 @@ Completed 200 OK in 95ms (Views: 94.3ms | ActiveRecord: 0.0ms)
   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/" for ::1 at 2016-12-01 10:42:58 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.0.0.1) lib/active_record/migration.rb:572:in `check_pending!'
+activerecord (5.0.0.1) lib/active_record/migration.rb:548:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.2) lib/puma/configuration.rb:225:in `call'
+puma (3.6.2) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.2) lib/puma/server.rb:415:in `process_client'
+puma (3.6.2) lib/puma/server.rb:275:in `block in run'
+puma (3.6.2) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (1.9ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (111.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUserContacts (20161130203612)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "user_contacts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/" for ::1 at 2016-12-01 10:46:32 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 537ms (Views: 521.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-12-01 10:49:31 -0500
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 185ms (Views: 167.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-12-01 10:50:02 -0500
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 44ms (Views: 43.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-12-01 11:05:52 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 100ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/" for ::1 at 2016-12-01 11:05:52 -0500
+Processing by WelcomeController#home as HTML
+  Rendering welcome/home.html.erb within layouts/application
+  Rendered welcome/home.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 109ms (Views: 107.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1/index" for ::1 at 2016-12-01 11:06:04 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/index"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.2) lib/puma/configuration.rb:225:in `call'
+puma (3.6.2) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.2) lib/puma/server.rb:415:in `process_client'
+puma (3.6.2) lib/puma/server.rb:275:in `block in run'
+puma (3.6.2) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered collection of /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [56 times] (32.7ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (30.6ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (205.3ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:06:10 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::MissingTemplate (Missing template graphs/show, application/show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/isuru/Desktop/Learn Labs/tiedot/app/views"
+  * "/Users/isuru/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views"
+):
+  
+app/controllers/graphs_controller.rb:24:in `block (2 levels) in index'
+app/controllers/graphs_controller.rb:23:in `index'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (82.9ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:08:16 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::MissingTemplate (Missing template graphs/show, application/show with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/isuru/Desktop/Learn Labs/tiedot/app/views"
+  * "/Users/isuru/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views"
+):
+  
+app/controllers/graphs_controller.rb:24:in `block (2 levels) in index'
+app/controllers/graphs_controller.rb:23:in `index'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (99.4ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:08:43 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::MissingTemplate (Missing template graphs/index, application/index with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/isuru/Desktop/Learn Labs/tiedot/app/views"
+  * "/Users/isuru/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views"
+):
+  
+app/controllers/graphs_controller.rb:24:in `block (2 levels) in index'
+app/controllers/graphs_controller.rb:23:in `index'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.4ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (87.7ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:09:52 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering graphs/index.html.erb within layouts/application
+  Rendered graphs/index.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/isuru/Desktop/Learn Labs/tiedot/app/views/graphs/index.html.erb:5: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/isuru/Desktop/Learn Labs/tiedot/app/views/graphs/index.html.erb:7: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/graphs/index.html.erb:5: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/graphs/index.html.erb:7: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/graphs_controller.rb:24:in `block (2 levels) in index'
+app/controllers/graphs_controller.rb:23:in `index'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.2ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (104.1ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:10:02 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering graphs/index.html.erb within layouts/application
+  [1m[36mGraph Load (2.6ms)[0m  [1m[34mSELECT "graphs".* FROM "graphs"[0m
+  Rendered graphs/index.html.erb within layouts/application (215.6ms)
+Completed 500 Internal Server Error in 225ms (ActiveRecord: 3.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `songs_upload_path' for #<#<Class:0x007f98d89f50b0>:0x007f98d7181038>):
+    1: <%= form_tag songs_upload_path, multipart: true do %>
+    2:   <%= file_field_tag :file %>
+    3:   <%= submit_tag "file" %>
+    4:   <% end%>
+  
+app/views/graphs/index.html.erb:1:in `_app_views_graphs_index_html_erb__4543470597583157310_70147210203000'
+app/controllers/graphs_controller.rb:24:in `block (2 levels) in index'
+app/controllers/graphs_controller.rb:23:in `index'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.5ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (97.3ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:10:14 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering graphs/index.html.erb within layouts/application
+  [1m[36mGraph Load (0.2ms)[0m  [1m[34mSELECT "graphs".* FROM "graphs"[0m
+  Rendered graphs/index.html.erb within layouts/application (206.7ms)
+Completed 500 Internal Server Error in 216ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `graphs_upload_path' for #<#<Class:0x007f98d89f50b0>:0x007f98d7359428>
+Did you mean?  graphs_path):
+    1: <%= form_tag graphs_upload_path, multipart: true do %>
+    2:   <%= file_field_tag :file %>
+    3:   <%= submit_tag "file" %>
+    4:   <% end%>
+  
+app/views/graphs/index.html.erb:1:in `_app_views_graphs_index_html_erb__4543470597583157310_70147211271500'
+app/controllers/graphs_controller.rb:24:in `block (2 levels) in index'
+app/controllers/graphs_controller.rb:23:in `index'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.8ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (82.4ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:15:05 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering graphs/index.html.erb within layouts/application
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGraph Load (2.5ms)[0m  [1m[34mSELECT "graphs".* FROM "graphs"[0m
+  Rendered graphs/index.html.erb within layouts/application (241.1ms)
+Completed 500 Internal Server Error in 265ms (ActiveRecord: 10.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `users_graphs_upload' for #<#<Class:0x007f98d8c67de8>:0x007f98d8c66ba0>
+Did you mean?  users_graphs_upload_url
+               users_graphs_upload_path
+               user_graph_url
+               user_graph_path
+               user_graphs_url):
+    1: <%= form_tag users_graphs_upload(current_user), multipart: true do %>
+    2:   <%= file_field_tag :file %>
+    3:   <%= submit_tag "file" %>
+    4:   <% end%>
+  
+app/views/graphs/index.html.erb:1:in `_app_views_graphs_index_html_erb__4543470597583157310_70147224316880'
+app/controllers/graphs_controller.rb:33:in `block (2 levels) in index'
+app/controllers/graphs_controller.rb:32:in `index'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.2ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (96.1ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:15:22 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering graphs/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered graphs/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 65ms (Views: 63.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 11:23:25 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hi1jsnqnBYaZlnSdYUnYornH+ggdarfdWAc2lr5EuT0iQ64ia8Tc5AFTqC87m+rBISNeQNRo02CyfiI2PGPKEQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f98d732a038 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-86894-1yxtx2.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `pry' for #<Binding:0x007f98d7584ab8>
+Did you mean?  pretty_print
+               pretty_inspect
+               pretty_print_cycle
+               try):
+  
+app/controllers/graphs_controller.rb:5:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.3ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (131.6ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 11:24:04 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hi1jsnqnBYaZlnSdYUnYornH+ggdarfdWAc2lr5EuT0iQ64ia8Tc5AFTqC87m+rBISNeQNRo02CyfiI2PGPKEQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f98d7292738 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-86894-1mxgvv3.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `pry' for #<Binding:0x007f98d727a8b8>
+Did you mean?  pretty_print
+               pretty_inspect
+               pretty_print_cycle
+               try):
+  
+app/controllers/graphs_controller.rb:5:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (17.7ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.7ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.5ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (121.6ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 11:24:40 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hi1jsnqnBYaZlnSdYUnYornH+ggdarfdWAc2lr5EuT0iQ64ia8Tc5AFTqC87m+rBISNeQNRo02CyfiI2PGPKEQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007fb2cf3691e0 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87536-13hvkyl.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 401 Unauthorized in 48514ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:26:03 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering graphs/index.html.erb within layouts/application
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered graphs/index.html.erb within layouts/application (65.0ms)
+Completed 200 OK in 577ms (Views: 544.6ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 11:26:11 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yWsayGqsmIbJRR7LoxPte+7gLa54YbRf1PWD0COSFFJtBddYe89B5FGAwnn5wd8YdgSJ5rFj0OI+jJdwobVnfg==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f8569aa6298 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-hjnxk7.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 1097444ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `item' for #<GraphsController:0x007f856f9dc4d8>):
+  
+app/controllers/graphs_controller.rb:8:in `block in upload'
+app/controllers/graphs_controller.rb:6:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.8ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (187.4ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 11:48:31 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering graphs/index.html.erb within layouts/application
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered graphs/index.html.erb within layouts/application (145.8ms)
+Completed 200 OK in 315ms (Views: 293.9ms | ActiveRecord: 6.9ms)
+
+
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 11:48:43 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f8570563478 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-145mvog.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.8ms)
+
+
+  
+NoMethodError (undefined method `shift' for #<CSV::Row "Days":"Monday" "Bill ":"1" "Salley":"5" "Joe":"3">):
+  
+app/controllers/graphs_controller.rb:10:in `block in upload'
+app/controllers/graphs_controller.rb:9:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.7ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.7ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (212.6ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 11:50:50 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f85696f3088 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-1ybkp0a.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 243985ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `shift' for #<CSV::Row "Days":"Monday" "Bill ":"1" "Salley":"5" "Joe":"3">):
+  
+app/controllers/graphs_controller.rb:11:in `block in upload'
+app/controllers/graphs_controller.rb:9:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.6ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.7ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (95.9ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 11:55:03 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f856947aef0 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-1ssvlfj.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 107348ms (ActiveRecord: 0.8ms)
+
+
+  
+NameError (undefined local variable or method `b' for #<GraphsController:0x007f856d7edbb0>):
+  
+app/controllers/graphs_controller.rb:12:in `block (2 levels) in upload'
+app/controllers/graphs_controller.rb:12:in `map'
+app/controllers/graphs_controller.rb:12:in `with_index'
+app/controllers/graphs_controller.rb:12:in `block in upload'
+app/controllers/graphs_controller.rb:9:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.4ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (11.7ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (185.5ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 11:57:06 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f856fcfe918 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-1yoinjg.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 79543ms (ActiveRecord: 0.9ms)
+
+
+  
+NoMethodError (undefined method `shift' for #<CSV::Row "Days":"Monday" "Bill ":"1" "Salley":"5" "Joe":"3">):
+  
+app/controllers/graphs_controller.rb:11:in `block in upload'
+app/controllers/graphs_controller.rb:9:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.4ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (12.6ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (105.5ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 11:58:34 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f85706735e8 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-u59wz2.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 78814ms (ActiveRecord: 1.7ms)
+
+
+  
+NameError (undefined local variable or method `b' for #<GraphsController:0x007f85706839e8>):
+  
+app/controllers/graphs_controller.rb:12:in `block (2 levels) in upload'
+app/controllers/graphs_controller.rb:12:in `map'
+app/controllers/graphs_controller.rb:12:in `with_index'
+app/controllers/graphs_controller.rb:12:in `block in upload'
+app/controllers/graphs_controller.rb:9:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.0ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (240.6ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 12:00:00 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f856f9dae08 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-qkxh24.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 170ms (ActiveRecord: 1.0ms)
+
+
+  
+NameError (undefined local variable or method `y_coordinates' for #<GraphsController:0x007f856f9fe920>
+Did you mean?  x_coordinates):
+  
+app/controllers/graphs_controller.rb:10:in `block in upload'
+app/controllers/graphs_controller.rb:9:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.8ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (223.7ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 12:00:26 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f857181a0f8 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-l5o1ye.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 1217659ms (ActiveRecord: 0.9ms)
+
+
+  
+NameError (undefined local variable or method `songs_path' for #<GraphsController:0x007f856fe15158>
+Did you mean?  session_path):
+  
+app/controllers/graphs_controller.rb:16:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.0ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.8ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (178.6ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 12:20:57 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f8569671f88 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-i9zp9v.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 101974ms (ActiveRecord: 3.0ms)
+
+
+  
+NameError (undefined local variable or method `songs_path' for #<GraphsController:0x007f856ac3d100>
+Did you mean?  session_path):
+  
+app/controllers/graphs_controller.rb:22:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.3ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (164.9ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 12:22:49 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f856ff35038 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-1tmgcff.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 527068ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `songs_path' for #<GraphsController:0x007f856ff358d0>
+Did you mean?  session_path):
+  
+app/controllers/graphs_controller.rb:22:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.2ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (8.9ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (298.0ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 12:31:49 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXrGcXiJ2cNUUE/2vIk1JBmyW0yTy5DTmkUPjkE57akhFAvhaeoAocyVk0TmWwdHgVb/BFrJ9G5wPBsuwx6ehQ==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f857215dcc8 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-1ylllkv.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 4.3ms)
+
+
+  
+TypeError (String can't be coerced into Fixnum):
+  
+app/controllers/graphs_controller.rb:27:in `+'
+app/controllers/graphs_controller.rb:27:in `block (2 levels) in upload'
+app/controllers/graphs_controller.rb:26:in `each'
+app/controllers/graphs_controller.rb:26:in `block in upload'
+app/controllers/graphs_controller.rb:25:in `each'
+app/controllers/graphs_controller.rb:25:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.7ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.2ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (108.7ms)
+Started GET "/users/1/graphs" for ::1 at 2016-12-01 12:32:12 -0500
+Processing by GraphsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  Rendering graphs/index.html.erb within layouts/application
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered graphs/index.html.erb within layouts/application (47.3ms)
+Completed 200 OK in 191ms (Views: 175.9ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 12:32:19 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/nPEFtgHcmwFh0Uevnd2QHBussQEm+HXeliZcVqh2NZaHQmGyWSrDp1CmazkpUQj6IoWjM2ZhWqQIY3R2Iar+g==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f856c6b0d70 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-1muzjk6.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 45731ms (ActiveRecord: 1.7ms)
+
+
+  
+NameError (undefined local variable or method `songs_path' for #<GraphsController:0x007f856c6b8458>
+Did you mean?  session_path):
+  
+app/controllers/graphs_controller.rb:38:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.0ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.0ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (197.9ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 12:33:13 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/nPEFtgHcmwFh0Uevnd2QHBussQEm+HXeliZcVqh2NZaHQmGyWSrDp1CmazkpUQj6IoWjM2ZhWqQIY3R2Iar+g==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f85706728c8 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-usz72y.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+Completed 500 Internal Server Error in 241094ms (ActiveRecord: 1.0ms)
+
+
+  
+NameError (undefined local variable or method `songs_path' for #<GraphsController:0x007f856ff86230>
+Did you mean?  session_path):
+  
+app/controllers/graphs_controller.rb:38:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.3ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (133.4ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 12:37:26 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/nPEFtgHcmwFh0Uevnd2QHBussQEm+HXeliZcVqh2NZaHQmGyWSrDp1CmazkpUQj6IoWjM2ZhWqQIY3R2Iar+g==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f856ad7d420 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-m1fktc.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.5ms)[0m  [1m[32mINSERT INTO "graphs" ("labels", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["labels", "[\"Bill \", \"Salley\", \"Joe\", \" Billbob\", \" Ann\"]"], ["data", "[49, 89, 32, 0, 0, 0]"], ["created_at", 2016-12-01 17:38:01 UTC], ["updated_at", 2016-12-01 17:38:01 UTC]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 35527ms (ActiveRecord: 7.1ms)
+
+
+  
+NameError (undefined local variable or method `songs_path' for #<GraphsController:0x007f85697c0448>
+Did you mean?  session_path):
+  
+app/controllers/graphs_controller.rb:34:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.1ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (140.7ms)
+Started POST "/users/1/graphs/upload" for ::1 at 2016-12-01 12:38:12 -0500
+Processing by GraphsController#upload as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/nPEFtgHcmwFh0Uevnd2QHBussQEm+HXeliZcVqh2NZaHQmGyWSrDp1CmazkpUQj6IoWjM2ZhWqQIY3R2Iar+g==", "file"=>#<ActionDispatch::Http::UploadedFile:0x007f857023a198 @tempfile=#<Tempfile:/var/folders/f6/xc56gkzn1k903jv2w0nhhdxw0000gn/T/RackMultipart20161201-87605-cz4v07.csv>, @original_filename="sample.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"sample.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"file", "user_id"=>"1"}
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "graphs" ("labels", "data", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["labels", "[\"Bill \", \"Salley\", \"Joe\", \" Billbob\", \" Ann\"]"], ["data", "[16, 19, 13, 33, 70, 19]"], ["created_at", 2016-12-01 17:38:36 UTC], ["updated_at", 2016-12-01 17:38:36 UTC]]
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/1/graphs.json" for ::1 at 2016-12-01 12:41:28 -0500
+  [1m[35m (2.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 500 Internal Server Error in 210707ms (ActiveRecord: 6.7ms)
+
+
+  
+NameError (undefined local variable or method `songs_path' for #<GraphsController:0x007f85702495f8>
+Did you mean?  session_path):
+  
+app/controllers/graphs_controller.rb:34:in `upload'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.7ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.9ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (185.8ms)
+Processing by GraphsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGraph Load (0.2ms)[0m  [1m[34mSELECT "graphs".* FROM "graphs"[0m
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 2.0ms)
+
+
+  
+SyntaxError (/Users/isuru/Desktop/Learn Labs/tiedot/app/serializers/graph_serializer.rb:4: syntax error, unexpected ',', expecting =>
+...comments, embed: :id, :user_id, :content, :created_at, seria...
+...                               ^):
+  
+app/serializers/graph_serializer.rb:4: syntax error, unexpected ',', expecting =>
+app/controllers/graphs_controller.rb:59:in `block (2 levels) in index'
+app/controllers/graphs_controller.rb:57:in `index'
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.5ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendering /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/isuru/.rvm/gems/ruby-2.3.0@global/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (89.1ms)

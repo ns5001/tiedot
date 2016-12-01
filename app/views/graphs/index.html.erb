@@ -1,0 +1,4 @@
+<%= form_tag users_graphs_upload_path(current_user), multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "file" %>
+  <% end%>
