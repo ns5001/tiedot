@@ -3,6 +3,7 @@ class UsersController < ApplicationController
  end
 
  def custom_sign_out
+   binding.pry
    sign_out current_user
    redirect_to root_path
  end

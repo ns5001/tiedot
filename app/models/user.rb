@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :user_contacts
   has_many :contacts, through: :user_contacts
+  has_many :connections
+  has_many :colleagues, through: :connections, source: :colleague
 
 
  def self.connect_to_linkedin(auth, signed_in_resource=nil)
