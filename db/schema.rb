@@ -12,16 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20161130224848) do
 
-  create_table "comment_graphs", force: :cascade do |t|
-    t.integer "comment_id"
-    t.integer "graph_id"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "graph_id"
   end
 
   create_table "contacts", force: :cascade do |t|
