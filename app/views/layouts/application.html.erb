@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- stylesheet_link_tags-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
     <title>Tiedot</title>
     <%= csrf_meta_tags %>
 
@@ -8,10 +13,37 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand page-scroll" href="/"><i class="ion-ios-analytics-outline"></i>Navuru Inc</a>
+          </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <% if user_signed_in? %>
+                   <%= link_to "Log Out", destroy_user_session_path(current_user)%>
+                <% else %>
+                          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+                <% end %>
+              </li>
+              <%  if !user_signed_in? %>
+                <li><%= link_to "Sign In", new_user_session_path %></li>
+              <% end %>
+            </ul>
+          </div>
+      </div>
+  </nav>
+  <br>
+  <br>
+
+
+
   <body>
     <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
     <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
     <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+    <%= content_tag(:div, flash[:message], :id => "flash_alert") if flash[:message] %>
+
     <%= yield %>
   </body>
 </html>
