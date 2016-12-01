@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :graphs
 
   root :to =>'welcome#index'
-  get "/users/sign_out.1" => 'users#custom_sign_out'
+  get "/users/sign_out.2" => 'users#custom_sign_out'
 
   resources :users do
     resources :graphs
