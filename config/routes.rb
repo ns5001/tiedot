@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :contacts
   resources :comments
   resources :graphs
+  resources :connections
 
   root :to =>'welcome#index'
   get "/users/sign_out.1" => 'users#custom_sign_out'
