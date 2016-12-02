@@ -75,8 +75,9 @@ function generateCurrentUserGraphs(input = 'bar'){
                         <option value="pie">Pie</option>
                         <option value="line">Line</option>
                       </select>
+                <a href="#">Customize Graph</a>
               <canvas id="myChart${i}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
-              </div>`)
+              </div><br><br>`)
             var graphLabel = JSON.parse(data[i].labels);
             var graphData = JSON.parse(data[i].data)
             generateGraphs('red', graphLabel, input, graphData, i)
