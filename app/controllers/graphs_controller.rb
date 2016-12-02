@@ -18,7 +18,6 @@ class GraphsController < ApplicationController
   end
 
   def show
-    binding.pry
     @graph = Graph.find(params[:id])
     respond_to do |format|
       format.html { render :show }

@@ -8,9 +8,7 @@ class CsvParser < ApplicationRecord
 
     self.parse_data_points(file_name)
     self.remove_extra_column
-
     self.load_temp_array
-
     self.aggreate_array
 
     graph_object.data = self.temp_arry.to_s
