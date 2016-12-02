@@ -15282,3 +15282,233 @@ Processing by GraphsController#index as JSON
 Completed 200 OK in 87ms (Views: 49.1ms | ActiveRecord: 4.3ms)
 
 
+Started GET "/users/4" for ::1 at 2016-12-02 18:25:19 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered graphs/_graphs.html.erb (24.9ms)
+  Rendered users/show.html.erb within layouts/application (39.2ms)
+Completed 200 OK in 304ms (Views: 273.2ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/users/4/graphs.json" for ::1 at 2016-12-02 18:25:19 -0500
+Processing by GraphsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mGraph Load (0.4ms)[0m  [1m[34mSELECT "graphs".* FROM "graphs" WHERE "graphs"."user_id" = ?[0m  [["user_id", 4]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 23]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 24]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 25]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (25.3ms)
+Completed 200 OK in 93ms (Views: 56.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:25:21 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (0.4ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (6.69ms)
+Completed 200 OK in 18ms (Views: 13.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:25:23 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (0.2ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (15.72ms)
+Completed 200 OK in 24ms (Views: 18.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/4" for ::1 at 2016-12-02 18:29:14 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered graphs/_graphs.html.erb (42.6ms)
+  Rendered users/show.html.erb within layouts/application (68.7ms)
+Completed 200 OK in 1166ms (Views: 1040.4ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/users/4/graphs.json" for ::1 at 2016-12-02 18:29:16 -0500
+Processing by GraphsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mGraph Load (0.4ms)[0m  [1m[34mSELECT "graphs".* FROM "graphs" WHERE "graphs"."user_id" = ?[0m  [["user_id", 4]]
+[active_model_serializers]   [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 23]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 24]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 25]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (83.74ms)
+Completed 200 OK in 215ms (Views: 114.9ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:29:21 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (12.5ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (58.17ms)
+Completed 200 OK in 179ms (Views: 100.0ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:29:25 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (1.3ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (44.41ms)
+Completed 200 OK in 134ms (Views: 88.8ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/4" for ::1 at 2016-12-02 18:29:50 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered graphs/_graphs.html.erb (15.3ms)
+  Rendered users/show.html.erb within layouts/application (32.6ms)
+Completed 200 OK in 519ms (Views: 493.2ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/users/4/graphs.json" for ::1 at 2016-12-02 18:29:50 -0500
+Processing by GraphsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mGraph Load (0.8ms)[0m  [1m[34mSELECT "graphs".* FROM "graphs" WHERE "graphs"."user_id" = ?[0m  [["user_id", 4]]
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 23]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 24]]
+[active_model_serializers]   [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 25]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (55.03ms)
+Completed 200 OK in 105ms (Views: 84.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:29:53 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (1.4ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (11.93ms)
+Completed 200 OK in 25ms (Views: 14.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:29:55 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (0.2ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (10.52ms)
+Completed 200 OK in 18ms (Views: 14.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:29:57 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (4.2ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (28.99ms)
+Completed 200 OK in 44ms (Views: 32.6ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/users/4" for ::1 at 2016-12-02 18:30:22 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered graphs/_graphs.html.erb (20.7ms)
+  Rendered users/show.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 476ms (Views: 451.5ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/users/4/graphs.json" for ::1 at 2016-12-02 18:30:22 -0500
+Processing by GraphsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mGraph Load (0.3ms)[0m  [1m[34mSELECT "graphs".* FROM "graphs" WHERE "graphs"."user_id" = ?[0m  [["user_id", 4]]
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 23]]
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 24]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 25]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (34.57ms)
+Completed 200 OK in 55ms (Views: 43.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:30:25 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (0.3ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (7.27ms)
+Completed 200 OK in 19ms (Views: 11.4ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:30:27 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (0.3ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (9.1ms)
+Completed 200 OK in 17ms (Views: 12.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/4" for ::1 at 2016-12-02 18:30:37 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered graphs/_graphs.html.erb (15.5ms)
+  Rendered users/show.html.erb within layouts/application (26.6ms)
+Completed 200 OK in 247ms (Views: 224.9ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/users/4/graphs.json" for ::1 at 2016-12-02 18:30:38 -0500
+Processing by GraphsController#index as JSON
+  Parameters: {"user_id"=>"4"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mGraph Load (0.6ms)[0m  [1m[34mSELECT "graphs".* FROM "graphs" WHERE "graphs"."user_id" = ?[0m  [["user_id", 4]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 23]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 24]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 25]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (128.83ms)
+Completed 200 OK in 142ms (Views: 134.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/4/graphs/22.json" for ::1 at 2016-12-02 18:30:42 -0500
+Processing by GraphsController#show as JSON
+  Parameters: {"user_id"=>"4", "id"=>"22"}
+  [1m[36mGraph Load (0.4ms)[0m  [1m[34mSELECT  "graphs".* FROM "graphs" WHERE "graphs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."graph_id" = ?[0m  [["graph_id", 22]]
+[active_model_serializers] Rendered GraphSerializer with ActiveModelSerializers::Adapter::Attributes (8.84ms)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.9ms)
+
+

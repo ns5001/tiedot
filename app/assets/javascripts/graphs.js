@@ -9,7 +9,6 @@ $(document).on('change','.target',function(){
 
 })
 
-
 function Graph(color, graphLabel, type, data, canvNumber){
   this.id = canvNumber;
   this.color = color;
@@ -21,14 +20,18 @@ function Graph(color, graphLabel, type, data, canvNumber){
 }
 
 Graph.prototype.createGraph = function(){
-  var ctx = document.getElementById(`myChart${this.id}`);
+    JsGraph(this.id, this.type, this.label, this.data)
+}
+
+function JsGraph(id, type, label, data){
+  var ctx = document.getElementById(`myChart${id}`);
   var myChart = new Chart(ctx, {
-      type: this.type,
+      type: type,
       data: {
-          labels: this.label,
+          labels: label,
           datasets: [{
-              label: this.label,
-              data: this.data,
+              label: label,
+              data: data,
               backgroundColor: 'rgba(255,99,132,1)',
               borderColor: 'rgba(255,99,132,1)',
               borderWidth: 1
