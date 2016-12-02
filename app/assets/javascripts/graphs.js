@@ -22,7 +22,6 @@ function Graph(color, graphLabel, type, data, canvNumber){
 
 Graph.prototype.createGraph = function(){
   var ctx = document.getElementById(`myChart${this.id}`);
-
   var myChart = new Chart(ctx, {
       type: this.type,
       data: {
@@ -47,47 +46,11 @@ Graph.prototype.createGraph = function(){
   });
 }
 
-Graph.prototype.createGraph_ = function(){
-
-  var ctx = document.getElementById(`myChart${this.id}`);
-
-  var myChart = new Chart(ctx, {
-      type: this.type,
-      data: {
-          labels: this.label,
-          datasets: [{
-              label: this.label,
-              data: this.data,
-              backgroundColor: 'rgba(255,99,132,1)',
-              borderColor: 'rgba(255,99,132,1)',
-              borderWidth: 1
-          }]
-      },
-      options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
-      }
-  });
-}
 
 function generateGraphs(color, label, type, data, canvasNumber){
-
   var graph = new Graph(color, label, type, data, canvasNumber);
   graph.createGraph()
 }
-
-function generateGraph(color, label, type, data, canvasNumber){
-
-  var graph_ = new Graph(color, label, type, data, canvasNumber);
-  graph_.createGraph_()
-}
-
-
 
 function User (name, email){
   this.name = name;
@@ -121,9 +84,9 @@ function generateCurrentUserGraphs(input = 'bar'){
           }
 
       });
-}
+    }
 
-function generateCurrentUserGraph(input_, id){
+function generateCurrentUserGraph(input, id){
   var userId = $("input#user_id").val()
   var currentGraphId = id
   $.ajax({
@@ -132,21 +95,12 @@ function generateCurrentUserGraph(input_, id){
       dataType: 'json'
     }).done(function(data) {
 
-          $(`div#${currentGraphId}`).html('')
-          $(`div#${currentGraphId}`).append(`
-            <select class="target">
-              <option value="bar">Bar</option>
-              <option value="pie">Pie</option>
-              <option value="line">Line</option>
-            </select>
+          $(`div#${currentGraphId} canvas`).replaceWith(`
             <canvas id="myChart${data.id}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
             `)
-
-          var graph_Label = JSON.parse(data.labels);
-          var graph_Data = JSON.parse(data.data)
-          generateGraphs('red', graph_Label, input_, graph_Data, data.id)
-
-
+          var graphLabel = JSON.parse(data.labels);
+          var graphData = JSON.parse(data.data)
+          generateGraphs('red', graphLabel, input, graphData, data.id)
 
     });
 }
