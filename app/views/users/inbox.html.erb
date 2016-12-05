@@ -1,0 +1,34 @@
+<div id="inbox">
+  <%@profilehash.each do |key, value|%>
+    <img src="#{value.profile_pic}">
+    <%=value.name%>
+    <div onClick="BringMessage()">
+      <%=key%>
+    </div>
+  <%end%>
+</div>
+
+
+<div id="message"></div>
+
+
+
+<div id="sender"></div>
+
+<button type="button" onClick="reply()">Reply</button>
+
+<button type="button" onClick="forward()">Forward</button>
+
+<button type="button" onClick="delete()">Delete</button>
+
+<button type="button" name="accept_request()"></button>
+
+<button type="button" onClick="inbox()">Inbox</button>
+<button type="button" onClick="outbox()">Outbox</button>
+
+
+
+if the message is a type CR, display these buttons (You may need to put this directly in the javascript file)
+<!-- Upon Accepting/Declining the email should get deleted-->
+<button type="button" name="button">Accept</button>
+<button type="button" name="button">Decline</button>

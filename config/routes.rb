@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :contacts
   resources :comments
+  resources :graphs
+  resources :connections
+  resources :users
+
   root :to =>'welcome#index'
-  get "/users/sign_out.3" => 'users#custom_sign_out'
+  get "/users/sign_out.:id" => 'users#custom_sign_out'
+  get "/users/:id/inbox/" => 'users#inbox'
 
   resources :users do
     resources :graphs
