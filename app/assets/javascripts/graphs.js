@@ -9,6 +9,11 @@ $(document).on('change','.target',function(){
 
 })
 
+// $(document).ready(function(){
+//   var graphId = $('input#graph_id').val()
+//   generateCurrentUserGraph('bar', graphId)
+// })
+
 function Graph(color, graphLabel, type, data, canvNumber){
   this.id = canvNumber;
   this.color = color;
@@ -26,6 +31,9 @@ Graph.prototype.createGraph = function(){
 function JsGraph(id, type, label, data){
   var ctx = document.getElementById(`myChart${id}`);
   var myChart = new Chart(ctx, {
+    title:{
+      text:"Chart Title",
+    },
       type: type,
       data: {
           labels: label,
@@ -78,7 +86,7 @@ function generateCurrentUserGraphs(input = 'bar'){
                         <option value="pie">Pie</option>
                         <option value="line">Line</option>
                       </select>
-                <a href="#">Customize Graph</a>
+                <a href="/users/${user_id}/graphs/${z}/edit">Customize Graph</a>
               <canvas id="myChart${i}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
               </div><br><br>`)
             var graphLabel = JSON.parse(data[i].labels);
@@ -96,7 +104,7 @@ function generateCurrentUserGraph(input, id){
   $.ajax({
       type: 'get',
       url: `/users/${userId}/graphs/${currentGraphId}.json`,
-      dataType: 'json'
+      dataType: 'json',
     }).done(function(data) {
 
           $(`div#${currentGraphId} canvas`).replaceWith(`
