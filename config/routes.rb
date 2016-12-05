@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   resources :comments
   resources :graphs
   resources :connections
+  resources :users
 
   root :to =>'welcome#index'
-  get "/users/sign_out.1" => 'users#custom_sign_out'
+  get "/users/sign_out.:id" => 'users#custom_sign_out'
+  get "/users/:id/inbox/" => 'users#inbox'
 
-  resources :users do
-    resources :graphs
-  end
+  # resources :users do
+  #   resources :graphs
+  # end
 
   post '/users/:user_id/graphs/upload' => 'graphs#upload', as: 'users_graphs_upload'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

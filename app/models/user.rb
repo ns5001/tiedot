@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :contacts, through: :user_contacts
   has_many :connections
   has_many :colleagues, through: :connections, source: :colleague
+  has_many :messages
+  has_many :received_messages, class_name: 'Message', foreign_key: :receiver
 
 
  def self.connect_to_linkedin(auth, signed_in_resource=nil)

@@ -1,3 +1,5 @@
+var i = 0
+
 function searchNames(){
   var inserted_name = $('#user_name').val()
   html = ''
@@ -36,7 +38,66 @@ function sendRequest(sender, receiver){
     datatype: "json",
     data: {"user1": sender, "user2": receiver},
     success: function(response){
+      alert("Contact Request Sent");
+    }
+  })
+}
+
+function getGraphs(){
+  var request = "Need current user";
+  $.ajax({
+    type: 'get',
+    url: "/graphs.json",
+    datatype: "json",
+    data: {"request": request},
+    success: function(response){
+      displayGraphs(response)
+    }
+  })
+};
+
+function displayGraphs(data, i) {
+  if ((i>data.length-1) || (i<0)){
+    i = 0
+  }
+    // $('#displayGraph"').append(graph stuff)
+}
+
+function interate() {
+  i += 1
+}
+
+function goBack(i) {
+  i = i - 1
+}
+
+
+function inbox() {
+  var request = "Need inbox of current_user";
+  $.ajax({
+    type: "get",
+    url: "/messages.json",
+    datatype: "json",
+    data: {"inbox": request},
+    success: function(response){
       debugger;
     }
   })
+}
+
+function outbox() {
+  var request = "Need outbox of current_user";
+  $.ajax({
+    type: "get",
+    url: "/messages.json",
+    datatype: "json",
+    data: {"outbox": request},
+    success: function(response){
+      debugger;
+    }
+  })
+}
+
+function bringMessage(){
+
 }

@@ -1,10 +1,9 @@
 class ConnectionsController < ApplicationController
 
   def create
-    binding.pry
-    new_connection = Connection.new(user_id: params[:user1].id, user2_id: params[:user2].id)
-    Message.create(user_id: params[:user1].id, receiver: params[:user2].id, content: "#{params[:user1].name} wants to connect", type: "CR", connection_id: new_connection.id)
-    binding.pry
+    new_connection = Connection.new(user_id: params[:user1].to_i, user2_id: params[:user2].to_i)
+    user1 = User.find_by(id: params[:user1].to_i)
+    Message.create(user_id: params[:user1].to_i, receiver: params[:user2].to_i, content: "#{user1.name} wants to connect", message_type: "CR", connection_id: new_connection.id)
   end
 
   def destroy

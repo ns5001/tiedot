@@ -55,6 +55,8 @@ class GraphsController < ApplicationController
   def index
     if params[:user_id]
       @graphs = Graph.find(params[:user_id])
+    elsif params[:request]
+      @graphs = Graph.where(user_id: current_user.id)
     else
       @graphs = Graph.all
     end
