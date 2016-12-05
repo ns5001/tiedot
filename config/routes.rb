@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   resources :contacts
   resources :comments
   resources :graphs
-  resources :connections
-  resources :users
 
   root :to =>'welcome#index'
   get "/users/sign_out.:id" => 'users#custom_sign_out'
   get "/users/:id/inbox/" => 'users#inbox'
+
+
+  resources :connections
+  resources :users
 
   resources :users do
     resources :graphs
