@@ -38,7 +38,20 @@ class GraphsController < ApplicationController
   end
 
   def update
+    arr = []
+    @graph = current_user.graphs.find(params[:id])
+    params["graphData"].values.first.values[1]
+    updated_data = params["graphData"].values
+    updated_data.each do |value|
+      arr << value.values[1]
+    end
+    @graph.data = arr.to_s
+    @graph.save
+    respond_to do |format|
+      format.json {render json: @graph}
+    end
   end
+
 
   def index
     validate_current_user

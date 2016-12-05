@@ -1,5 +1,68 @@
+<body class="<%= controller_name %> <%= action_name %>">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<style>
+
+.w3-btn {width:150px;}
+
+div.edit_graph {
+    width: auto;
+    height: auto;
+    margin-left: auto ;
+    margin-right: auto ;
+    border-radius: 25px;
+    background: #F9F9F9;
+    padding: 20px;
+
+}
+
+div.button{
+      position: fixed;
+
+    /* set position */
+    top: 100px;
+    right: 100px;
+
+    /* must have dimension */
+    width: 100px;
+    height: 500px;
+}
+
+table, td {
+    border: 1px solid black;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+</style>
 <input id="user_id" type="hidden"  value="<%=current_user.id%>">
 <input id="graph_id" type="hidden" value="<%=@graph.id%>">
-<div class="edit_graph">
+<!--  button change data-->
+<div class="button">
+  <p><button id = "changeData" class="w3-btn w3-round-large w3-blue" onclick="changeData()">Change Data</button></p>
 
 </div>
+<!--  -->
+<div class="outer" style= "width: 610px; height: 600px; margin-left:auto; margin-right:auto;">
+  <div class="edit_graph">
+
+  </div>
+</div>
+
+
+<div id="data">
+  <form class="dataUpdate" action="/users/<%=current_user.id%>/graphs/<%=@graph.id%>" method="patch">
+    <table id="table_data">
+      <tr id="header">
+
+      </tr>
+      <tr id="data_values">
+
+      </tr>
+    </table>
+
+  </form>
+
+</div>
+
+</body>

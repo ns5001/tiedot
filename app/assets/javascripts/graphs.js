@@ -1,6 +1,21 @@
-$(document).ready(function(){
-  generateCurrentUserGraphs()
-  })
+$(document).on('turbolinks:load',function(){
+  if($('.users.show').length > 0){
+    generateCurrentUserGraphs()
+  }else if ($('.graphs.edit').length > 0){
+    var graphId = $('input#graph_id').val()
+    var userId = $('input#user_id').val()
+    generateCurrentUserGraph_edit('bar', graphId)
+
+    $(document).on('submit','form',function(event){
+      event.preventDefault();
+      var dataPoints = $( this ).serializeArray();
+      updateGraphData(dataPoints, this.action)
+      generateCurrentUserGraph_edit('bar', graphId)
+      location.reload();
+    });
+  }
+});
+
 
 $(document).on('change','.target',function(){
   var value = $(this).val();
@@ -9,9 +24,11 @@ $(document).on('change','.target',function(){
 
 })
 
-// $(document).ready(function(){
+// $(document).on('turbolinks:load',function(){
+//   console.log('document ready');
 //   var graphId = $('input#graph_id').val()
-//   generateCurrentUserGraph('bar', graphId)
+//   var userId = $('input#user_id').val()
+//   generateCurrentUserGraph_edit('bar', graphId)
 // })
 
 function Graph(color, graphLabel, type, data, canvNumber){
@@ -21,7 +38,7 @@ function Graph(color, graphLabel, type, data, canvNumber){
   this.label = graphLabel;
   this.data = data;
   this.graph = '';
-
+  this.createGraph();
 }
 
 Graph.prototype.createGraph = function(){
@@ -60,7 +77,7 @@ function JsGraph(id, type, label, data){
 
 function generateGraphs(color, label, type, data, canvasNumber){
   var graph = new Graph(color, label, type, data, canvasNumber);
-  graph.createGraph()
+  // graph.createGraph()
 }
 
 function User (name, email){
@@ -115,4 +132,74 @@ function generateCurrentUserGraph(input, id){
           generateGraphs('red', graphLabel, input, graphData, data.id)
 
     });
+}
+
+
+function generateCurrentUserGraph_edit(input, id){
+  var userId = $("input#user_id").val()
+  var currentGraphId = id
+  $.ajax({
+      type: 'get',
+      url: `/users/${userId}/graphs/${currentGraphId}.json`,
+      dataType: 'json',
+    }).done(function(data) {
+          $(`.edit_graph`).append(`
+            <div id="${data.id}">
+                    <select class="target">
+                      <option value="bar">Bar</option>
+                      <option value="pie">Pie</option>
+                      <option value="line">Line</option>
+                    </select>
+            <canvas id="myChart${data.id}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
+            </div><br><br>
+            `)
+
+          var graphLabel = JSON.parse(data.labels);
+          var graphData = JSON.parse(data.data)
+          generateGraphs('red', graphLabel, input, graphData, data.id)
+
+    });
+}
+
+
+function changeData(){
+
+  userId = $('input#user_id').val()
+  graphId = $('input#graph_id').val()
+
+  $.ajax({
+      type: 'get',
+      url: `/users/${userId}/graphs/${graphId}.json`,
+      dataType: 'json',
+    }).done(function(data) {
+        var labels = JSON.parse(data.labels)
+        var data_point = JSON.parse(data.data)
+
+        var table =  $("#table_data");
+        var tableHeader = $('#header')
+        var dataVals = $('#data_values')
+
+        for(var i =0; i< labels.length; i++){
+          tableHeader.append(`<td> ${labels[i]} </td>`)
+        }
+
+        for(var i=0; i<data_point.length; i++){
+          dataVals.append(`
+            <td><input type="text" name="${i}" value="${data_point[i]}"></td>
+            `)
+        }
+        $('form').append('<input type="submit" name="UpdateData" value="Update Data">')
+    });
+
+}
+
+function updateGraphData(data, url){
+  $.ajax({
+    type: 'patch',
+    url: url,
+    dataType: 'json',
+    data: {"graphData":data}
+  }).done(function(data){
+      alert("Graph Updated!")
+  })
 }
