@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
-<<<<<<< HEAD
+  # before_action :authenticate_user!
+  # before_action :validate_current_user
 
-=======
-  before_action :authenticate_user!
-  before_action :validate_current_user
->>>>>>> 4339e386e5d5a14c32f24da85bcc395ba81805c8
  def new
  end
 
  def custom_sign_out
+   binding.pry
    sign_out current_user
    redirect_to root_path
  end

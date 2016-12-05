@@ -1,6 +1,6 @@
 class GraphsController < ApplicationController
   before_action :authenticate_user!
-  before_action :validate_current_user_graphs
+  # before_action :validate_current_user_graphs
   require 'csv'
 
   def upload
@@ -41,22 +41,11 @@ class GraphsController < ApplicationController
   end
 
   def index
-<<<<<<< HEAD
-    if params[:user_id]
-      @graphs = Graph.find(params[:user_id])
-    elsif params[:request]
-      @graphs = Graph.where(user_id: current_user.id)
-    else
-      @graphs = Graph.all
-    end
-=======
     validate_current_user
     @graphs = current_user.graphs
->>>>>>> 4339e386e5d5a14c32f24da85bcc395ba81805c8
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @graphs}
-
     end
   end
 
