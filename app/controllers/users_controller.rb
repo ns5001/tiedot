@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
+<<<<<<< HEAD
 
+=======
+  before_action :authenticate_user!
+  before_action :validate_current_user
+>>>>>>> 4339e386e5d5a14c32f24da85bcc395ba81805c8
  def new
  end
 
@@ -22,11 +27,11 @@ class UsersController < ApplicationController
  end
 
  def show
-   @user = User.find(params[:id])
-   respond_to do |format|
-     format.html { render :show }
-     format.json { render json: @user}
-   end
+     @user = current_user
+       respond_to do |format|
+         format.html { render :show }
+         format.json { render json: @user}
+       end
  end
 
  def update

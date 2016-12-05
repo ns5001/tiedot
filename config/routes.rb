@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/users/sign_out.:id" => 'users#custom_sign_out'
   get "/users/:id/inbox/" => 'users#inbox'
 
+
   # resources :users do
   #   resources :graphs
   # end
