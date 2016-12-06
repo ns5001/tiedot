@@ -1,9 +1,24 @@
-<body class="<%= controller_name %> <%= action_name %>">
-<%= form_tag users_graphs_upload_path(current_user), multipart: true do %>
-Chart Title: <input type="text" name="title" value="">
-Data Points: <input type="text" name="data_label" value=""><br>
-Description:<textarea name="description" rows="5" cols="40"></textarea>
-  <%= file_field_tag :file %>
-  <%= submit_tag "file" %>
-  <% end%>
-</body>
+<style>
+div.upload {
+    width: auto;
+    height: auto;
+    margin-left: auto ;
+    margin-right: auto ;
+    border-radius: 25px;
+    background: #F9F9F9;
+    padding: 20px;
+
+}
+</style>
+<div class="upload">
+  <%= form_tag users_graphs_upload_path(current_user), multipart: true do %>
+  Chart Title: <input type="text" name="title" value="">
+  Data Points: <input type="text" name="data_label" value="">
+  <br>
+  <br>
+  Description:<textarea name="description" rows="5" cols="40"></textarea>
+    <%= file_field_tag :file %>
+    <br>
+    <%= submit_tag "Upload CSV", class:'w3-btn w3-round-small w3-blue' %>
+    <% end%>
+</div>
