@@ -59,4 +59,12 @@ class CsvParser < ApplicationRecord
 
  end
 
+ def update_data(graph_object,updated_data)
+   arr = []
+   updated_data.each do |value|
+     arr << value.values[1]
+   end
+   graph_object.data = arr.to_s
+   graph_object.save
+ end
 end

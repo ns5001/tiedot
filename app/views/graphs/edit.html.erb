@@ -1,7 +1,7 @@
-<body class="<%= controller_name %> <%= action_name %>">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+<body class="<%= controller_name %> <%= action_name %>">
 <style>
 
 .w3-btn {width:150px;}
@@ -85,8 +85,11 @@ table, td {
 <div class="right_button">
 
   <form class="email" action="/users/<%=current_user.id%>/graphs/<%=@graph.id%>/send_mail" method="post">
-    Recipent Email:<input id="recipient" type="text" name="recipient" value=""></input>
-    Message:<textarea id="message" type="text" name="name" value="" rows="4" cols="20"></textarea>
+    <div class="recp">
+      <b>Recipent(s) Email:</b><input id="recipient" type="text" name="recipient" value="" placeholder="john@example.com"></input>
+    </div>
+    <br>
+    <b>Message:</b><textarea id="message" type="text" name="name" value="" rows="4" cols="20" placeholder="..."></textarea>
     <br> <br>
     <input id="email-btn" type="submit" name="Email" class="w3-btn w3-round-large w3-blue" value="Email">
   </form>

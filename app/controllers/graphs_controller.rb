@@ -23,7 +23,7 @@ class GraphsController < ApplicationController
     @email = Emailer.new
     @email.open_file(current_user.name,email,graph)
     @email.send_email(message)
-    
+
     render :json => {"message": "success"}
   end
 
@@ -51,15 +51,10 @@ class GraphsController < ApplicationController
   end
 
   def update
-    arr = []
     @graph = current_user.graphs.find(params[:id])
-    params["graphData"].values.first.values[1]
     updated_data = params["graphData"].values
-    updated_data.each do |value|
-      arr << value.values[1]
-    end
-    @graph.data = arr.to_s
-    @graph.save
+    csv_parser = CsvParser.new
+    csv_parser.update_data(@graph,updated_data)
     respond_to do |format|
       format.json {render json: @graph}
     end
@@ -67,7 +62,7 @@ class GraphsController < ApplicationController
 
 
   def index
-    validate_current_user
+    # validate_current_user
     @graphs = current_user.graphs
     respond_to do |format|
       format.html { render :index }

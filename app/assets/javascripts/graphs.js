@@ -1,48 +1,53 @@
 $(document).on('turbolinks:load',function(){
   if($('.users.show').length > 0){
     generateCurrentUserGraphs()
+    $('#showCsv').on('click',function(){
+      document.getElementById('id02').style.display='block'
+    })
   }else if ($('.graphs.edit').length > 0){
-
     var graphId = $('input#graph_id').val()
     var userId = $('input#user_id').val()
-    generateCurrentUserGraph_edit('bar', graphId)
+    generateCurrentUserGraph_edit('bar', graphId);
 
-    $(document).on('submit','form',function(event){
-      event.preventDefault();
-      var dataPoints = $( this ).serializeArray();
-      updateGraphData(dataPoints, this.action)
-      generateCurrentUserGraph_edit('bar', graphId)
-      location.reload();
-    });
+    updateData();
 
-    $("#email-btn").on('click', function(e){
-      e.preventDefault();
-      var recipient = $("#recipient").val();
-      var msg = $("#message").val();
-      var charNum = $("input#graph_id").val();
-      var userNum = $("input#user_id").val();
-      var base64Chart = $(`#myChart${charNum}`).get(0).toDataURL()
-      var url = this.parentElement.action
-      document.getElementById('id01').style.display='block'
-          $.ajax({
-            type: 'post',
-            url: `/users/${userNum}/graphs/${charNum}/send_mail`,
-            dataType: 'json',
-            data: {"chart":base64Chart, "recipient":recipient, "message":msg}
-          }).done(function(data){
-            document.getElementById('id01').style.display='none'
-            if(document.getElementById('id01').style.display='none'){
-              alert("Graph sent!");
-            }
-          });
-    });
-
+    emailGraph();
   }
 });
 
-function email(){
-  debugger;
-}
+ function updateData(){
+   $(document).on('submit','form',function(event){
+     event.preventDefault();
+     var dataPoints = $(this).serializeArray();
+     updateGraphData(dataPoints, this.action)
+     generateCurrentUserGraph_edit('bar', graphId)
+     location.reload();
+   });
+ }
+
+ function emailGraph(){
+   $("#email-btn").on('click', function(e){
+     e.preventDefault();
+     var recipient = $("#recipient").val();
+     var msg = $("#message").val();
+     var charNum = $("input#graph_id").val();
+     var userNum = $("input#user_id").val();
+     var base64Chart = $(`#myChart${charNum}`).get(0).toDataURL()
+     var url = this.parentElement.action
+     document.getElementById('id01').style.display='block'
+         $.ajax({
+           type: 'post',
+           url: `/users/${userNum}/graphs/${charNum}/send_mail`,
+           dataType: 'json',
+           data: {"chart":base64Chart, "recipient":recipient, "message":msg}
+         }).done(function(data){
+           document.getElementById('id01').style.display='none'
+           if(document.getElementById('id01').style.display='none'){
+             alert("Graph sent!");
+           }
+         });
+   });
+ }
 
 function saveChart(){
   var charNum = $("input#graph_id").val()
@@ -223,7 +228,7 @@ function changeData(){
             <td><input type="text" name="${i}" value="${data_point[i]}"></td>
             `)
         }
-        $('form').append('<input type="submit" name="UpdateData" value="Update Data">')
+        $('.dataUpdate').append('<input type="submit" name="UpdateData" value="Update Data" style="margin-right:auto;">')
     });
 
 }
