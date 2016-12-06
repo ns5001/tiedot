@@ -15,13 +15,16 @@ class GraphsController < ApplicationController
   end
 
   def send_mail
-    # binding.pry
-    graph = params["chart"]
+
+    graph = params[:chart]
+    email = params[:recipient]
+    message = params[:message]
+
     @email = Emailer.new
-    @email.mail_to = params[:mail_to]
-    @email.mail_subject = params[:mail_subject]
-    @email.mail_body = params[:mail_body]
-    @email.send
+    @email.open_file(current_user.name,email,graph)
+    @email.send_email(message)
+    
+    render :json => {"message": "success"}
   end
 
   def new

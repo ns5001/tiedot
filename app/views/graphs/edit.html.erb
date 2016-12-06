@@ -28,12 +28,46 @@ div.button{
     width: 100px;
     height: 500px;
 }
+div.right_button{
+      position: fixed;
+
+    /* set position */
+    top: 100px;
+    left: 100px;
+
+    /* must have dimension */
+    width: 100px;
+    height: 500px;
+}
 
 table, td {
     border: 1px solid black;
     margin-left: auto ;
     margin-right: auto ;
 }
+
+  /*loader*/
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      margin: auto;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  /**/
 </style>
 <!-- <script src="FileSaver.js"></script> -->
 
@@ -46,10 +80,16 @@ table, td {
   <br><br>
   <p><button id="save-btn" class="w3-btn w3-round-large w3-blue" onclick="saveChart()">Download Chart</button></p>
   <br><br>
+
+</div>
+<div class="right_button">
+
   <form class="email" action="/users/<%=current_user.id%>/graphs/<%=@graph.id%>/send_mail" method="post">
+    Recipent Email:<input id="recipient" type="text" name="recipient" value=""></input>
+    Message:<textarea id="message" type="text" name="name" value="" rows="4" cols="20"></textarea>
+    <br> <br>
     <input id="email-btn" type="submit" name="Email" class="w3-btn w3-round-large w3-blue" value="Email">
   </form>
-
 
 </div>
 <!--  -->
@@ -74,5 +114,11 @@ table, td {
   </form>
 
 </div>
+
+<!-- Pop up Modal -->
+<div id="id01" class="w3-modal">
+      <div class="loader"></div>
+  </div>
+<!--  -->
 
 </body>

@@ -16,32 +16,32 @@ $(document).on('turbolinks:load',function(){
     });
 
     $("#email-btn").on('click', function(e){
-      event.preventDefault();
-      $(".email").append(
-        `
-        <br><br>
-        <input id="recipient" type="text" name="recipient" value="">
-        <input id="send-email-btn" type="submit" name="send_email"  value="Send">`
-      )
-
+      e.preventDefault();
+      var recipient = $("#recipient").val();
+      var msg = $("#message").val();
+      var charNum = $("input#graph_id").val();
+      var userNum = $("input#user_id").val();
+      var base64Chart = $(`#myChart${charNum}`).get(0).toDataURL()
+      var url = this.parentElement.action
+      document.getElementById('id01').style.display='block'
+          $.ajax({
+            type: 'post',
+            url: `/users/${userNum}/graphs/${charNum}/send_mail`,
+            dataType: 'json',
+            data: {"chart":base64Chart, "recipient":recipient, "message":msg}
+          }).done(function(data){
+            document.getElementById('id01').style.display='none'
+            if(document.getElementById('id01').style.display='none'){
+              alert("Graph sent!");
+            }
+          });
     });
 
   }
 });
 
 function email(){
-  var charNum = $("input#graph_id").val()
-  var userNum = $("input#user_id").val()
-  var base64Chart = $(`#myChart${charNum}`).get(0).toDataURL()
-  var url = this.parentElement.action
-      $.ajax({
-        type: 'post',
-        url: `/users/${userNum}/graphs/${charNum}/send_mail`,
-        dataType: 'json',
-        data: {"chart":base64Chart}
-      }).done(function(data){
-          debugger;
-      });
+  debugger;
 }
 
 function saveChart(){
