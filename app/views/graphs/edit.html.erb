@@ -35,11 +35,21 @@ table, td {
     margin-right: auto ;
 }
 </style>
+<!-- <script src="FileSaver.js"></script> -->
+
+</script>
 <input id="user_id" type="hidden"  value="<%=current_user.id%>">
 <input id="graph_id" type="hidden" value="<%=@graph.id%>">
 <!--  button change data-->
 <div class="button">
   <p><button id = "changeData" class="w3-btn w3-round-large w3-blue" onclick="changeData()">Change Data</button></p>
+  <br><br>
+  <p><button id="save-btn" class="w3-btn w3-round-large w3-blue" onclick="saveChart()">Download Chart</button></p>
+  <br><br>
+  <form class="email" action="/users/<%=current_user.id%>/graphs/<%=@graph.id%>/send_mail" method="post">
+    <input id="email-btn" type="submit" name="Email" class="w3-btn w3-round-large w3-blue" value="Email">
+  </form>
+
 
 </div>
 <!--  -->

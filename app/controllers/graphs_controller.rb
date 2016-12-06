@@ -14,6 +14,16 @@ class GraphsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def send_mail
+    # binding.pry
+    graph = params["chart"]
+    @email = Emailer.new
+    @email.mail_to = params[:mail_to]
+    @email.mail_subject = params[:mail_subject]
+    @email.mail_body = params[:mail_body]
+    @email.send
+  end
+
   def new
   end
 

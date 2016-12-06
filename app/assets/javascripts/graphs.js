@@ -2,6 +2,7 @@ $(document).on('turbolinks:load',function(){
   if($('.users.show').length > 0){
     generateCurrentUserGraphs()
   }else if ($('.graphs.edit').length > 0){
+
     var graphId = $('input#graph_id').val()
     var userId = $('input#user_id').val()
     generateCurrentUserGraph_edit('bar', graphId)
@@ -13,8 +14,47 @@ $(document).on('turbolinks:load',function(){
       generateCurrentUserGraph_edit('bar', graphId)
       location.reload();
     });
+
+    $("#email-btn").on('click', function(e){
+      event.preventDefault();
+      $(".email").append(
+        `
+        <br><br>
+        <input id="recipient" type="text" name="recipient" value="">
+        <input id="send-email-btn" type="submit" name="send_email"  value="Send">`
+      )
+
+    });
+
   }
 });
+
+function email(){
+  var charNum = $("input#graph_id").val()
+  var userNum = $("input#user_id").val()
+  var base64Chart = $(`#myChart${charNum}`).get(0).toDataURL()
+  var url = this.parentElement.action
+      $.ajax({
+        type: 'post',
+        url: `/users/${userNum}/graphs/${charNum}/send_mail`,
+        dataType: 'json',
+        data: {"chart":base64Chart}
+      }).done(function(data){
+          debugger;
+      });
+}
+
+function saveChart(){
+  var charNum = $("input#graph_id").val()
+  $(`#myChart${charNum}`).get(0).toBlob(function(blob) {
+    saveAs(blob, "chart.png");
+});
+}
+
+function sendChartToServer(){
+  var canvas = $(`#myChart${charNum}`).get(0).toDataURL();
+
+}
 
 
 $(document).on('change','.target',function(){
@@ -24,12 +64,6 @@ $(document).on('change','.target',function(){
 
 })
 
-// $(document).on('turbolinks:load',function(){
-//   console.log('document ready');
-//   var graphId = $('input#graph_id').val()
-//   var userId = $('input#user_id').val()
-//   generateCurrentUserGraph_edit('bar', graphId)
-// })
 
 function Graph(color, graphLabel, type, data, canvNumber){
   this.id = canvNumber;
@@ -48,6 +82,7 @@ Graph.prototype.createGraph = function(){
 function JsGraph(id, type, label, data){
   var ctx = document.getElementById(`myChart${id}`);
   var myChart = new Chart(ctx, {
+
     title:{
       text:"Chart Title",
     },
@@ -60,7 +95,7 @@ function JsGraph(id, type, label, data){
               backgroundColor: 'rgba(255,99,132,1)',
               borderColor: 'rgba(255,99,132,1)',
               borderWidth: 1
-          }]
+          }],
       },
       options: {
           scales: {
@@ -69,7 +104,7 @@ function JsGraph(id, type, label, data){
                       beginAtZero:true
                   }
               }]
-          }
+          },
       }
   });
 }
