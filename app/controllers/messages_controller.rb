@@ -12,4 +12,23 @@ class MessagesController < ApplicationController
       format.json { render json: @messages}
     end
   end
+
+  def create
+    # binding.pry
+  end
+
+  def show
+    @message = Message.find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @message}
+    end
+  end
+
+  private
+
+  def message_params
+    params.require(:message).permit(:receiver, :content, :message_type, :accept, :master_message_id, :connection_id, :user_id)
+  end
+
 end

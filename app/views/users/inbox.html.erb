@@ -1,12 +1,30 @@
 <div id="inbox">
-  <%@profilehash.each do |key, value|%>
-    <img src="#{value.profile_pic}">
-    <%=value.name%>
-    <div onClick="BringMessage()">
-      <%=key%>
-    </div>
-  <%end%>
+
+  <% @messages.each do |message| %>
+    <div class="message">
+      <img src="#{message.user.profile_pic}">
+      <h3><%=message.user.name%></h3>
+      <p><%=message.content%></p>
+      <button class="reply-button" type="button">Reply</button>
+
+     <%= form_for Message.new(receiver: message.user.id , user_id: message.receiver), html: {class: "new-message"} do |f| %>
+      <%= f.text_area :content %>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :receiver %>
+      <%= f.submit %>
+     <% end %>
+   </div>
+
+  <% end %>
+
 </div>
+
+
+
+
+<br>
+<br>
+<br>
 
 
 <div id="message"></div>
@@ -15,7 +33,7 @@
 
 <div id="sender"></div>
 
-<button type="button" onClick="reply()">Reply</button>
+
 
 <button type="button" onClick="forward()">Forward</button>
 

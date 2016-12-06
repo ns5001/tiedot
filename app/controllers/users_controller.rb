@@ -5,18 +5,17 @@ class UsersController < ApplicationController
  def new
  end
 
+ def create
+   binding.pry
+ end
+
  def custom_sign_out
    sign_out current_user
    redirect_to root_path
  end
 
   def inbox
-    @messages = current_user.messages
-    @profile_hash = {}
-    @messages.each do |message|
-      @user = User.find_by(id: message.user_id)
-      profile_hash[:message] = @user
-    end
+    @messages = current_user.received_messages
   end
 
  def create

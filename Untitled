@@ -1,0 +1,30 @@
+$(document).ready(function () {
+    $('form').submit(function(event) {
+      //prevent form from submitting the default way
+      event.preventDefault();
+
+      var values = $(this).serialize();
+
+      debugger;
+
+      var posting = $.post('/messages', values);
+
+      posting.done(function(data) {
+        debugger;
+      });
+    });
+  });
+
+
+
+function reply(user, receiver){
+  var html =  ``
+  html += `<%= form_for Message.new do |f| %>`
+  html += `<%=f.label :content%>`
+  html += `<%=f.text_field :content%>`
+  html += `<%=f.hidden_field :receiver, :value => ${receiver}%>`
+  html += `<%=f.hidden_field :user_id, :value => ${user}%>`
+  html += `<%=f.submit%>`
+  html += `<%end%>`
+  $('div#form').append(html)
+}
