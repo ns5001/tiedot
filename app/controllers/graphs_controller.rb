@@ -1,6 +1,6 @@
 class GraphsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :validate_current_user_graphs
+  before_action :validate_current_user_graphs
   require 'csv'
 
   def upload
@@ -15,7 +15,6 @@ class GraphsController < ApplicationController
   end
 
   def send_mail
-
     graph = params[:chart]
     email = params[:recipient]
     message = params[:message]
@@ -62,7 +61,6 @@ class GraphsController < ApplicationController
 
 
   def index
-    # validate_current_user
     @graphs = current_user.graphs
     respond_to do |format|
       format.html { render :index }

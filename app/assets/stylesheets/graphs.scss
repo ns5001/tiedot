@@ -1,3 +1,69 @@
 // Place all the styles related to the graphs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Graphs edit page start
+.w3-btn {width:150px;}
+
+div.edit_graph {
+    width: auto;
+    height: auto;
+    margin-left: auto ;
+    margin-right: auto ;
+    border-radius: 25px;
+    background: #F9F9F9;
+    padding: 20px;
+
+}
+
+div.button{
+      position: fixed;
+
+    /* set position */
+    top: 100px;
+    right: 100px;
+
+    /* must have dimension */
+    width: 100px;
+    height: 500px;
+}
+div.right_button{
+      position: fixed;
+
+    /* set position */
+    top: 100px;
+    left: 100px;
+
+    /* must have dimension */
+    width: 100px;
+    height: 500px;
+}
+
+table, td {
+    border: 1px solid black;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+  /*loader*/
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      margin: auto;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+// Users Graphs page end
