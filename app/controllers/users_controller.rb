@@ -1,35 +1,35 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :validate_current_user
+  before_action :authenticate_user!
+  before_action :validate_current_user
 
- def new
- end
+   def new
+   end
 
- def custom_sign_out
-   sign_out current_user
-   redirect_to root_path
- end
+   def custom_sign_out
+     sign_out current_user
+     redirect_to root_path
+   end
 
-  def inbox
-    @messages = current_user.messages
-    @profile_hash = {}
-    @messages.each do |message|
-      @user = User.find_by(id: message.user_id)
-      profile_hash[:message] = @user
-    end
-  end
+   def inbox
+      @messages = current_user.messages
+      @profile_hash = {}
+      @messages.each do |message|
+        @user = User.find_by(id: message.user_id)
+        profile_hash[:message] = @user
+     end
+   end
 
- def create
+   def create
 
- end
+   end
 
- def show
-     @user = current_user
-       respond_to do |format|
-         format.html { render :show }
-         format.json { render json: @user}
-       end
- end
+  def show
+    @user = current_user
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @user}
+     end
+   end
 
  def update
  end
@@ -37,9 +37,6 @@ class UsersController < ApplicationController
  def index
    if params[:inserted_name]
      @users = User.where(name: params[:inserted_name])
-    #  if @users.include?(current_user)
-    #    @users.delete(current_user)
-    #  end
    else
      @users = User.all
    end

@@ -1,31 +1,27 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 
-
+<body class="<%= controller_name %> <%= action_name %>">
 <br>
-
   <input id= "user_name" type="text" name="user_name" placeholder="Enter Name">
   <button onclick="searchNames()"type="submit" name="button">Search</button>
 
   <div id="foundNames"></div>
 
   <br>
-  <button onclick="getGraphs()">Click me to for graph</button>
-  <div class="displayGraph">
-
+  <div class="upload_graph" style="padding-left: 1cm;">
+      <button id="showCsv" class="w3-btn w3-round-large w3-blue" type="button" name="button">Import CSV</button>
   </div>
 
- <!-- Insert code to display graph's comments -->
-
- <!--Insert go left button .... Insert Edit Button ..... Insert go right button-->
-
-<style>
-div.container {
-    width: 600px;
-    height: 1300px;
-    border-radius: 25px;
-    background: #F9F9F9;
-    padding: 20px;
-    overflow: scroll;
-}
-</style>
 <input type="hidden" name="location" value="user_show_page">
 <%= render 'graphs/graphs' %>
+
+<!--  upload graph model -->
+<div id="id02" class="w3-modal">
+    <div class="w3-container upload">
+      <span onclick="document.getElementById('id02').style.display='none'" class="w3-closebtn">&times;</span>
+        <%= render 'graphs/upload'%>
+      </div>
+  </div>
+<!--  -->
+ </body>
