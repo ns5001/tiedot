@@ -8,6 +8,7 @@ $(document).on('turbolinks:load',function(){
     genrateGraph()
     updateData();
     emailGraph();
+    changeSelector();
   }
 
 });
@@ -24,7 +25,7 @@ $(document).on('turbolinks:load',function(){
      document.getElementById('id02').style.display='block'
    })
  }
-
+var charNum = '';
  function updateData(){
    $(document).on('submit','form',function(event){
      event.preventDefault();
@@ -40,10 +41,11 @@ $(document).on('turbolinks:load',function(){
      e.preventDefault();
      var recipient = $("#recipient").val();
      var msg = $("#message").val();
-     var charNum = $("input#graph_id").val();
+     charNum = $("input#graph_id").val();
      var userNum = $("input#user_id").val();
     //  var base64Chart = $(`#myChart${charNum}`).get(0).toDataURL()
      var base64Chart = sendChartToServer();
+
      var url = this.parentElement.action
      document.getElementById('id01').style.display='block'
          $.ajax({
@@ -61,7 +63,8 @@ $(document).on('turbolinks:load',function(){
  }
 
 function saveChart(){
-  var charNum = $("input#graph_id").val()
+    debugger;
+   charNum = $("input#graph_id").val()
   $(`#myChart${charNum}`).get(0).toBlob(function(blob) {
     saveAs(blob, "chart.png");
 });
@@ -69,16 +72,20 @@ function saveChart(){
 
 function sendChartToServer(){
   var canvas = $(`#myChart${charNum}`).get(0).toDataURL();
+  return canvas
 }
 
 
-$(document).on('change','.target',function(){
-  var value = $(this).val();
-  selector = value;
-  var graphId = this.parentElement.id
-  generateCurrentUserGraph(value, graphId)
 
-})
+function changeSelector(){
+  $(document).on('change','.target',function(){
+    var value = $(this).val();
+    selector = value;
+    var graphId = this.parentElement.id
+    generateCurrentUserGraph(value, graphId)
+
+  })
+}
 
 
 function Graph(graphLabel, type, data, canvNumber, color){
@@ -104,6 +111,7 @@ Graph.prototype.changeColor = function(){
       // graph.color = 'rgba(0,0,0,0.1)'
       $(`.edit_graph`).html('')
       var randomColor = getRandomColor()
+
       genrateGraph(randomColor, selector)
       console.log('clicked')
   }
@@ -221,9 +229,9 @@ function generateCurrentUserGraph_edit(input, id,clr='rgba(255,99,132,1)'){
           $(`.edit_graph`).append(`
             <div id="${data.id}">
                     <select class="target">
-                      <option value="bar">Bar</option>
-                      <option value="pie">Pie</option>
-                      <option value="line">Line</option>
+                      <option  value="bar">Bar</option>
+                      <option  value="pie">Pie</option>
+                      <option  value="line">Line</option>
                     </select>
             <canvas id="myChart${data.id}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
             </div><br><br>
@@ -231,7 +239,7 @@ function generateCurrentUserGraph_edit(input, id,clr='rgba(255,99,132,1)'){
 
           var graphLabel = JSON.parse(data.labels);
           var graphData = JSON.parse(data.data)
-          debugger;
+
           generateGraphs(graphLabel, input, graphData, data.id, clr)
 
     });

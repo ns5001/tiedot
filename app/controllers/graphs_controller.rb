@@ -9,11 +9,11 @@ class GraphsController < ApplicationController
     data_label:params[:data_label])
     csv_parser = CsvParser.new
     csv_parser.format_data(@csv_file, @graph, current_user)
-    binding.pry
     redirect_to user_path(current_user)
   end
 
   def send_mail
+
     graph = params[:chart]
     email = params[:recipient]
     message = params[:message]
