@@ -1,42 +1,36 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :validate_current_user
+  before_action :authenticate_user!
+  before_action :validate_current_user
 
- def new
- end
+   def new
+   end
 
- def create
-
- end
+   def create
+   end
 
  def custom_sign_out
    sign_out current_user
    redirect_to root_path
  end
 
- def getCurrentUser
-   @current_user = current_user
-   respond_to do |format|
-     format.html { render :show }
-     format.json { render json: @current_user}
-   end
- end
 
   def inbox
     @messages = current_user.received_messages
   end
 
- def create
+   def custom_sign_out
+     sign_out current_user
+     redirect_to root_path
+   end
 
- end
 
- def show
-     @user = current_user
-       respond_to do |format|
-         format.html { render :show }
-         format.json { render json: @user}
-       end
- end
+  def show
+    @user = current_user
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @user}
+     end
+   end
 
  def update
  end
@@ -44,9 +38,6 @@ class UsersController < ApplicationController
  def index
    if params[:inserted_name]
      @users = User.where(name: params[:inserted_name])
-    #  if @users.include?(current_user)
-    #    @users.delete(current_user)
-    #  end
    else
      @users = User.all
    end

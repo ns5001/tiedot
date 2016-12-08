@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require Chart
+//= require FileSaver
 //= require_tree .
