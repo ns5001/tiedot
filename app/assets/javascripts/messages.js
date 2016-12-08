@@ -13,13 +13,15 @@ $(document).on('turbolinks:load',function () {
 function messageReceived(){
   $('div.receivedMessages').on('submit','form',function(e){
     event.preventDefault()
+
     var serializedForm = JSON.stringify($(this).serializeArray())
+    var message_id = JSON.parse(serializedForm)[0].value
 
     var requestType = $(this).attr('class')
     if (requestType == 'reply-message'){
        replyMessage(serializedForm)
     }else if(requestType == 'delete-message') {
-       deleteMessage(serializedForm)
+       deleteMessage(message_id)
     }
   })
 }
@@ -27,7 +29,6 @@ function messageReceived(){
 function messageSent(){
   $('div.sentMessages').on('submit','form',function(e){
     event.preventDefault()
-    debugger;
     var message_id = this.message_id.value
     deleteMessage(message_id)
   })
@@ -53,9 +54,9 @@ function deleteMessage(data){
     url: `/messages/${data}.json`,
     datetype: 'json',
     success: function(response){
-      $('receivedMessages').html('')
-      alert('Message Deleted')
-      displayMessages()
+      debugger;
+      $(`div.sentMessages div#${response.id}`).toggle()
+      $(`div.receivedMessages div#${response.id}`).toggle()
     }
   })
 }
@@ -188,7 +189,7 @@ function sentRequests(response){
    $('.receivedMessages').html('')
 
    for(var i=0;i<response.length;i++){
-       html += `<p>You receieved a message from ${response[i][1].name}</p>`
+       html += `<div id="${response[i][2].id}"<p>You receieved a message from ${response[i][1].name}</p>`
        html += `<p> <img src="${response[i][1].profile_pic}"></p>`
        html += `<p><h4>${response[i][2].content}</h4></p>`
 
@@ -205,10 +206,11 @@ function sentRequests(response){
        html += `<button type="submit">Reply</button>`
        html += `</form></div>`
 
-       html += `<div class="delete-message-div"><form class="delete-message">`
+       html += `<div class="delete-message-div">
+       <form class="delete-message">`
        html += `<input type="hidden" name="user" value="${response[i][2].id}">`
        html += `<button type="submit">delete</button>`
-       html += `</form></div>`
+       html += `</form></div></div>`
    }
   $('.receivedMessages').append(html)
  }
@@ -217,20 +219,20 @@ function sentRequests(response){
    var html = ''
    $('.sentMessages').html('')
    for(var i=0;i<response.length;i++){
-     html += `<p>You sent a message to ${response[i][1].name}</p>`
+     html += `<div id="${response[i][2].id}">
+              <p>You sent a message to ${response[i][1].name}</p>`
      html += `<p> <img src="${response[i][1].profile_pic}"></p>`
      html += `<p><h4>${response[i][2].content}</h4></p>`
 
      html += `<div class="delete-message-div"><form class="delete-message">`
      html += `<input type="hidden" id="message_id" value="${response[i][2].id}">`
      html += `<button type="submit">Delete</button>`
-     html += `</form></div>`
+     html += `</form></div></div>`
    }
    $('.sentMessages').append(html)
  }
 
   function displayMessages() {
-    debugger;
     $.ajax({
       type: 'get',
       url: '/messages.json',

@@ -42,8 +42,6 @@ class MessagesController < ApplicationController
   def destroy
     @message = Message.find_by(id: params[:id])
     @message.destroy
-    # Message.all.destroy(@message)
-    @message = ['deleted']
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @message}
