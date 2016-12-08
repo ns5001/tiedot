@@ -10,6 +10,8 @@ gem 'devise'
 # use Omniauth for Linkedin login
 gem 'omniauth'
 gem 'omniauth-linkedin'
+# User AM Serializer
+gem 'active_model_serializers'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
