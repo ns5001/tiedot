@@ -1,36 +1,113 @@
-$(document).ready(function () {
-    $('.new-message').hide();
-    $('.reply-button').on('click', function(){
-      $(this).parent().children('.new-message').show()
-    })
-// (<%=key.receiver%>, <%=key.user_id%>)
-    $('form#new-message').submit(function(event) {
-      //prevent form from submitting the default way
-      event.preventDefault();
+$(document).on('turbolinks:load',function () {
+  if($('.users.inbox').length > 0){
+    displayRequests()
+    displayMessages()
+    requestsReceived()
+    requestsSent()
+    messageReceived()
+    messageSent()
+
+  }
+})
+
+function messageReceived(){
+  $('div.receivedMessages').on('submit','form',function(e){
+    event.preventDefault()
+    var serializedForm = JSON.stringify($(this).serializeArray())
+
+    var requestType = $(this).attr('class')
+    if (requestType == 'reply-message'){
+       replyMessage(serializedForm)
+    }else if(requestType == 'delete-message') {
       debugger;
-
-      var values = $(this).serialize();
-
-      // debugger;
-
-      var posting = $.post('/messages', values);
-
-      posting.done(function(data) {
-        debugger;
-      });
-    });
-  });
-
-function reply(user, receiver){
-  // var html = "<form id='new-message' >"
-  // html += "<input name='content' type='text' />"
-  // html += `<input name='receiver' type='hidden' value=${receiver} />`
-  // html += `<input name='user_id' type='hidden' value=${user} />`
-  // html += "<input name='submit' type='submit' />"
-  // html += "</form>"
-  // $('div#form').append(html)
-  $('#new-message').show();
+       deleteMessage(serializedForm)
+    }
+  })
 }
+
+function messageSent(){
+  $('div.sentMessages').on('submit','form',function(e){
+    event.preventDefault()
+    var serializedForm = $(this).serializeArray()
+
+    var requestType = $(this).attr('class')
+    debugger
+    deleteMessage(serializedForm)
+  })
+}
+
+
+function replyMessage(data){
+  $.ajax({
+    type: 'post',
+    url: '/messages',
+    datetype: 'json',
+    data: {"data":data},
+    success: function(response){
+      debugger;
+    }
+  })
+}
+
+function deleteMessage(data){
+  debugger;
+  $.ajax({
+    type: 'delete',
+    url: `/messages/${data}.json`,
+    datetype: 'json',
+    data: {"data":data},
+    success: function(response){
+      $('receivedMessages').html('')
+      alert('Message Deleted')
+      displayMessages()
+    }
+  })
+}
+
+function requestsReceived(){
+  $('div.receivedRequests').on('submit','form',function(e){
+    event.preventDefault()
+    var serializedForm = JSON.stringify($(this).serializeArray())
+
+    var requestType = $(this).attr('class')
+    if (requestType == 'reject-request'){
+       handleRequest(serializedForm)
+    }else if(requestType == 'accept-request') {
+       handleRequest(serializedForm)
+    }
+  })
+ }
+
+ function requestsSent() {
+   $('div.sentRequests').on('submit','form',function(e){
+     event.preventDefault()
+     var serializedForm = JSON.stringify($(this).serializeArray())
+     var requestType = $(this).attr('class')
+     if (requestType == 'retract-request') {
+       handleRequest(serializedForm)
+     }
+   })
+ }
+
+
+ function handleRequest(data){
+   var connection_id = JSON.parse(data)[2].value
+  $.ajax({
+    type: 'PATCH',
+    url: `/connections/${connection_id}`,
+    datatype: 'json',
+    data: {"data":data},
+    success: function(response){
+      if (response == "") {
+        alert("Request Declined")
+        displayRequests()
+      }else {
+        alert("Request Accepted! You are now connected!")
+        displayRequests()
+      }
+    }
+  })
+ }
 
 function createMessage(){
   $.ajax({
@@ -41,6 +118,127 @@ function createMessage(){
     success: function(response){
       debugger;
     }
-
   })
+ }
+
+
+function receivedRequests(response) {
+  var html = ''
+  $('.receivedRequests').html('')
+  for(var i=0;i<response.length;i++){
+
+    html += `<p><img src="${response[i][0].profile_pic}"></p>`
+    html += `<p>${response[i][0].name} wants to connect!</p>`
+
+    html += `<div class="accept-request-div"><form class="accept-request">`
+    html += `<input type="hidden" name="user" value="${response[i][0].id}">`
+    html += `<input type="hidden" name="user2" value="${response[i][1].id}">`
+    html += `<input type="hidden" name="request" value="${response[i][2].id}">`
+    html += `<input type="hidden" name="status" value="true">`
+    html += `<button type="submit">Accept</button>`
+    html += `</form></div>`
+
+    html += `<div class ="reject-request-div"><form class="reject-request">`
+    html += `<input type="hidden" name="user" value="${response[i][0].id}">`
+    html += `<input type="hidden" name="user2" value="${response[i][1].id}">`
+    html += `<input type="hidden" name="request" value="${response[i][2].id}">`
+    html += `<input type="hidden" name="status" value="false">`
+    html += `<button type="submit">Decline</button>`
+    html += `</form></div>`
+  }
+  $('.receivedRequests').append(html)
 }
+
+function sentRequests(response){
+  var html = ''
+  $('.sentRequests').html('')
+
+  for(var i=0;i<response.length;i++){
+
+    html += `<p>You requested to connect with ${response[i][1].name}</p>`
+    html += `<p> <img src="${response[i][1].profile_pic}"></p>`
+    html += `<p>${response[i][1].company}</p>`
+    html += `<p>${response[i][1].position}</p>`
+
+    html += `<div class="retract-request-div"><form class="retract-request">`
+    html += `<input type="hidden" name="user" value="${response[i][0].id}">`
+    html += `<input type="hidden" name="user2" value="${response[i][1].id}">`
+    html += `<input type="hidden" name="request" value="${response[i][2].id}">`
+    html += `<input type="hidden" name="status" value="false">`
+    html += `<button type="submit">Retract</button>`
+    html += `</form></div>`
+  }
+   $('.sentRequests').append(html)
+}
+
+
+ function displayRequests(){
+   $.ajax({
+     type: 'get',
+     url: '/connections.json',
+     success: function(response) {
+       if (response[0] != 'Delete') {
+         receivedRequests(response[0])
+         sentRequests(response[1])
+       } else{
+         $('.sentRequests').html('')
+       }
+     }
+   })
+ }
+
+ function receievedMessages(response) {
+   var html = ''
+   $('.receivedMessages').html('')
+
+   for(var i=0;i<response.length;i++){
+       html += `<p>You receieved a message from ${response[i][1].name}</p>`
+       html += `<p> <img src="${response[i][1].profile_pic}"></p>`
+       html += `<p><h4>${response[i][2].content}</h4></p>`
+
+       html += `<div class="reply-message-div"><form class="reply-message">`
+       html += `<input type="hidden" name="user" value="${response[i][0].id}">`
+       html += `<input type="hidden" name="user2" value="${response[i][1].id}">`
+       if (response[i][2].master_message_id == null) {
+         html += `<input type="hidden" name="master_message_id" value="${response[i][2].id}">`
+       }else {
+         html += `<input type="hidden" name="master_message_id" value="${response[i][2].master_message_id}">`
+       }
+       html += `<input type="text", name="content">`
+       html += `<button type="submit">Reply</button>`
+       html += `</form></div>`
+
+       html += `<div class="delete-message-div"><form class="delete-message">`
+       html += `<input type="hidden" name="user" value="${response[i][2].id}">`
+       html += `<button type="submit">delete</button>`
+       html += `</form></div>`
+   }
+  $('.receivedMessages').append(html)
+ }
+
+ function sentMessages(response) {
+   var html = ''
+   $('.sentMessages').html('')
+   for(var i=0;i<response.length;i++){
+     html += `<p>You sent a message to ${response[i][1].name}</p>`
+     html += `<p> <img src="${response[i][1].profile_pic}"></p>`
+     html += `<p><h4>${response[i][2].content}</h4></p>`
+
+     html += `<div class="delete-message-div"><form class="delete-message">`
+     html += `<input type="hidden" name="user" value="${response[i][0].id}">`
+     html += `<button type="submit">Delete</button>`
+     html += `</form></div>`
+   }
+   $('.sentMessages').append(html)
+ }
+
+  function displayMessages() {
+    $.ajax({
+      type: 'get',
+      url: '/messages.json',
+      success: function(response) {
+        receievedMessages(response[0])
+        sentMessages(response[1])
+      }
+    })
+  }

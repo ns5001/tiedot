@@ -4,13 +4,16 @@ Rails.application.routes.draw do
   resources :comments
   resources :graphs
   resources :messages
+  resources :connections
+
 
   root :to =>'welcome#index'
   get "/users/sign_out.:id" => 'users#custom_sign_out'
   get "/users/:id/inbox/" => 'users#inbox'
   get 'messages/:id/message_data', to: 'messages#message_data'
+  get "/users/current_user" => 'users#getCurrentUser'
 
-  resources :connections
+
   resources :users
 
   resources :users do

@@ -1,27 +1,48 @@
+<body class="<%=controller_name %> <%=action_name%>">
 <div id="inbox">
 
-  <% @messages.each do |message| %>
+  <!-- <% @messages.each do |message| %>
     <div class="message">
       <img src="#{message.user.profile_pic}">
       <h3><%=message.user.name%></h3>
       <p><%=message.content%></p>
       <button class="reply-button" type="button">Reply</button>
 
-     <%= form_for Message.new(receiver: message.user.id , user_id: message.receiver), html: {class: "new-message"} do |f| %>
+    <div class="reply-form">
+
+     <%= form_for Message.new(receiver_id: message.user.id , user_id: message.receiver_id), html: {class: "new-message"} do |f| %>
       <%= f.text_area :content %>
       <%= f.hidden_field :user_id %>
-      <%= f.hidden_field :receiver %>
+      <%= f.hidden_field :receiver_id %>
       <%= f.submit %>
      <% end %>
+    </div>
    </div>
 
-  <% end %>
+  <% end %> -->
+  <h2>Received Messages</h2>
+  <div class="receivedMessages"></div>
+  <br>
+  <h2>Sent Messages</h2>
+  <div class="sentMessages"></div>
+  <br>
+  <h2>Received Requests</h2>
+  <div class="receivedRequests">
+  </div>
+  <br>
+  <h2>Sent Requests</h2>
+  <div class="sentRequests"></div>
+
 
 </div>
 
 
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -50,3 +71,5 @@ if the message is a type CR, display these buttons (You may need to put this dir
 <!-- Upon Accepting/Declining the email should get deleted-->
 <button type="button" name="button">Accept</button>
 <button type="button" name="button">Decline</button>
+
+</body>

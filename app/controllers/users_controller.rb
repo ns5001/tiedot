@@ -6,12 +6,20 @@ class UsersController < ApplicationController
  end
 
  def create
-   binding.pry
+
  end
 
  def custom_sign_out
    sign_out current_user
    redirect_to root_path
+ end
+
+ def getCurrentUser
+   @current_user = current_user
+   respond_to do |format|
+     format.html { render :show }
+     format.json { render json: @current_user}
+   end
  end
 
   def inbox
