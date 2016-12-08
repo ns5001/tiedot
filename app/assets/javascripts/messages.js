@@ -19,7 +19,6 @@ function messageReceived(){
     if (requestType == 'reply-message'){
        replyMessage(serializedForm)
     }else if(requestType == 'delete-message') {
-      debugger;
        deleteMessage(serializedForm)
     }
   })
@@ -28,11 +27,9 @@ function messageReceived(){
 function messageSent(){
   $('div.sentMessages').on('submit','form',function(e){
     event.preventDefault()
-    var serializedForm = $(this).serializeArray()
-
-    var requestType = $(this).attr('class')
-    debugger
-    deleteMessage(serializedForm)
+    debugger;
+    var message_id = this.message_id.value
+    deleteMessage(message_id)
   })
 }
 
@@ -40,22 +37,21 @@ function messageSent(){
 function replyMessage(data){
   $.ajax({
     type: 'post',
-    url: '/messages',
+    url: '/messages.json',
     datetype: 'json',
     data: {"data":data},
     success: function(response){
-      debugger;
+      alert('Reply Sent!')
+      displayMessages()
     }
   })
 }
 
 function deleteMessage(data){
-  debugger;
   $.ajax({
     type: 'delete',
     url: `/messages/${data}.json`,
     datetype: 'json',
-    data: {"data":data},
     success: function(response){
       $('receivedMessages').html('')
       alert('Message Deleted')
@@ -204,6 +200,7 @@ function sentRequests(response){
        }else {
          html += `<input type="hidden" name="master_message_id" value="${response[i][2].master_message_id}">`
        }
+       html += `<input type="hidden" name="message_id" value="${response[i][2].id}">`
        html += `<input type="text", name="content">`
        html += `<button type="submit">Reply</button>`
        html += `</form></div>`
@@ -225,7 +222,7 @@ function sentRequests(response){
      html += `<p><h4>${response[i][2].content}</h4></p>`
 
      html += `<div class="delete-message-div"><form class="delete-message">`
-     html += `<input type="hidden" name="user" value="${response[i][0].id}">`
+     html += `<input type="hidden" id="message_id" value="${response[i][2].id}">`
      html += `<button type="submit">Delete</button>`
      html += `</form></div>`
    }
@@ -233,12 +230,14 @@ function sentRequests(response){
  }
 
   function displayMessages() {
+    debugger;
     $.ajax({
       type: 'get',
       url: '/messages.json',
       success: function(response) {
         receievedMessages(response[0])
         sentMessages(response[1])
+        $('.receievedMessages').html('')
       }
     })
   }

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/users/:id/inbox/" => 'users#inbox'
   get 'messages/:id/message_data', to: 'messages#message_data'
   get "/users/current_user" => 'users#getCurrentUser'
+  get "/messages/chain/:id" => 'messages#messageHistory'
 
 
   resources :users

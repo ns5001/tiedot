@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206200647) do
+ActiveRecord::Schema.define(version: 20161208195611) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20161206200647) do
   create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.string  "content"
-    t.boolean "accept",            default: false
+    t.boolean "reply",             default: false
     t.integer "connection_id"
     t.integer "receiver_id"
     t.integer "master_message_id"

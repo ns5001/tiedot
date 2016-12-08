@@ -46,7 +46,7 @@ class User < ApplicationRecord
     sent_array = []
     sub_array = []
 
-    Message.where(receiver_id:self.id).each do |message|
+    Message.where(receiver_id:self.id, reply:false).each do |message|
       sub_array << @user1 = User.find_by(id: message.receiver_id)
       sub_array << @user2 = User.find_by(id: message.user_id)
       sub_array << message
@@ -54,7 +54,7 @@ class User < ApplicationRecord
       sub_array = []
     end
 
-    Message.where(user_id:self.id).each do |message|
+    Message.where(user_id:self.id, reply:false).each do |message|
       sub_array << @user1 = User.find_by(id: message.user_id)
       sub_array << @user2 = User.find_by(id: message.receiver_id)
       sub_array << message
