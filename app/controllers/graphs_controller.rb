@@ -5,12 +5,11 @@ class GraphsController < ApplicationController
 
   def upload
     @csv_file = params[:file].path
-    @graph = current_user.graphs.build
-    @graph.title = params[:title]
-    @graph.description = params[:description]
-    @graph.data_label = params[:data_label]
+    @graph = current_user.graphs.build(title:params[:title], description:params[:description],
+    data_label:params[:data_label])
     csv_parser = CsvParser.new
     csv_parser.format_data(@csv_file, @graph, current_user)
+    binding.pry
     redirect_to user_path(current_user)
   end
 
