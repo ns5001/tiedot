@@ -8,20 +8,22 @@ class UsersController < ApplicationController
    def create
    end
 
- def custom_sign_out
-   sign_out current_user
-   redirect_to root_path
- end
-
-
-  def inbox
-    @messages = current_user.received_messages
-  end
-
    def custom_sign_out
      sign_out current_user
      redirect_to root_path
    end
+
+   def getCurrentUser
+     @user = current_user
+     respond_to do |format|
+       format.html {render :show}
+       format.json {render json: @user}
+     end
+   end
+
+  def inbox
+    @messages = current_user.received_messages
+  end
 
 
   def show

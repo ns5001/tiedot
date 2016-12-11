@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20161206171158) do
+ActiveRecord::Schema.define(version: 20161210224603) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,8 +22,8 @@ ActiveRecord::Schema.define(version: 20161206171158) do
 
   create_table "connections", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "user2_id"
-    t.boolean "status",   default: false
+    t.integer "receiver_id"
+    t.boolean "status",      default: false
   end
 
   create_table "contacts", force: :cascade do |t|
