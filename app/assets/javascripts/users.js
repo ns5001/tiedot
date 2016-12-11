@@ -13,8 +13,6 @@ function searchNames(){
      html += `<ul>`
      for (var i=0;i<response.found_user.length;i++)
        {
-         // var cuser = JSON.stringify(current_user)
-         // var test_user = JSON.stringify(response.found_user[i])
          html +=  `<li>
                      <ul>
                      <li> ${response.found_user[i].profile_pic} </li>
@@ -34,7 +32,7 @@ function searchNames(){
 function sendRequest(sender, receiver){
  $.ajax({
    type: 'post',
-   url: "/connections",
+   url: "/connections.json",
    datatype: "json",
    data: {"user1": sender, "user2": receiver},
    success: function(response){

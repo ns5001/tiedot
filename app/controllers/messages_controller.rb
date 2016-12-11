@@ -1,25 +1,34 @@
 class MessagesController < ApplicationController
   def index
-    @messages = current_user.messages
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @messages.to_json}
+      format.json { render json: Message.all }
+    end
+  end
+
+  def getReceivedMessages
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: current_user.received_messages }
+    end
+  end
+
+  def getSentMessages
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: current_user.received_messages }
     end
   end
 
   def create
-    @old_message = Message.find_by(id: JSON.parse(params[:data])[3]["value"])
-    @old_message.reply = true
-    @old_message.save
-
-    @user1 = current_user
-    @user2 = User.find_by(id: JSON.parse(params[:data])[1]["value"])
-    @master_message = Message.find_by(id: JSON.parse(params[:data])[2]["value"])
-    content = JSON.parse(params[:data])[4]["value"]
-    @message = Message.create(user_id: @user1.id, receiver_id: @user2.id, content: content)
+    if params[:message_id]
+      @message = Message.createReply(params)
+    else
+      @message = ''
+    end
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @message.to_json}
+      format.json { render json: @message}
     end
   end
 
@@ -40,12 +49,8 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = Message.find_by(id: params[:id])
-    @message.destroy
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @message}
-    end
+    message = Message.find_by(id: params[:id])
+    message.destroy
   end
 
   private
