@@ -12,20 +12,19 @@ $(document).on('turbolinks:load', function() {
 })
 
 /*
-  1) Need to make delete button for received/sent messages
-  3) Need to make create message button work
+   Need to make create message button work
 */
 
 function deleteMessage(){
   $('.delete-message').on('click', function(event){
     event.preventDefault()
+    $(`div#received-message-${this.id}`).toggle()
     var message_id = this.id
     $.ajax({
       type: 'delete',
       url: `/messages/${message_id}.json`,
       datatype: "json",
       success: function(response){
-        $(`div#received-message-${this.id}`).toggle()
         alert('Message Deleted!')
       }
     })
@@ -56,6 +55,7 @@ function displayReceivedRequests() {
 function replyMessage() {
     $('.reply-message').on('click', function(event){
     event.preventDefault()
+    $(`div#received-message-${this.id}`).toggle()
     var serializedData = $(this).parent().serialize()
     $.ajax({
       type: 'post',
@@ -64,7 +64,6 @@ function replyMessage() {
       data: serializedData,
       success: function(response){
         alert('Reply Sent!')
-        $(`div#received-message-${this.id}`).toggle()
       }
     })
   })
@@ -75,6 +74,7 @@ function replyMessage() {
 function acceptRequest() {
   $('.accept-request').on('click', function(event){
     event.preventDefault()
+    $(`div#received-request-${this.id}`).toggle()
     var request_id = this.id
     $.ajax({
       type: 'PATCH',
@@ -83,7 +83,6 @@ function acceptRequest() {
       data: {"status": true},
       success: function(response){
         alert('You are now connected!')
-        $(`div#received-request-${this.id}`).toggle()
       }
     })
   })
@@ -92,6 +91,7 @@ function acceptRequest() {
 function declineRequest() {
   $('.decline-request').on('click', function(event){
     event.preventDefault()
+    $(`div#received-request-${this.id}`).toggle()
     var request_id = this.id
     $.ajax({
       type: 'PATCH',
@@ -100,7 +100,6 @@ function declineRequest() {
       data: {"status": false},
       success: function(response){
         alert('Request Deleted!')
-        $(`div#received-request-${this.id}`).toggle()
       }
     })
   })
@@ -109,7 +108,7 @@ function declineRequest() {
 function retractRequest(){
   $('.retract-request').on('click', function(event){
     event.preventDefault()
-
+    $(`div#sent-request-${this.id}`).toggle()
     var request_id = this.id
     $.ajax({
       type: 'PATCH',
@@ -118,7 +117,6 @@ function retractRequest(){
       data: {"status": false},
       success: function(response){
         alert('Request Retracted!')
-        $(`div#sent-request-${this.id}`).toggle()
       }
     })
   })

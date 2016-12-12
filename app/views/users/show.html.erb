@@ -4,8 +4,12 @@
 <body class="<%= controller_name %> <%= action_name %>">
 
 <br>
-  <input id= "user_name" type="text" name="user_name" placeholder="Enter Name">
-  <button onclick="searchNames()"type="submit" name="button">Search</button>
+  <form class="searchNames">
+    <input id= "user_name" type="text" name="user_name" placeholder="Enter Name">
+    <button type="submit" name="button">Search</button>
+  </form>
+
+
 
   <div id="foundNames">
   </div>

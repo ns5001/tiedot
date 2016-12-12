@@ -1,45 +1,65 @@
 var i = 0
 
 function searchNames(){
- var inserted_name = $('#user_name').val()
- html = ''
- $.ajax({
-   type: 'get',
-   url: "/users.json",
-   datatype: "json",
-   data: {"inserted_name": inserted_name},
-   success: function(response){
-     var current_user = JSON.parse(response.current_user).id
-     html += `<ul>`
-     for (var i=0;i<response.found_user.length;i++)
-       {
-         html +=  `<li>
-                     <ul>
-                     <li> ${response.found_user[i].profile_pic} </li>
-                     <li> ${response.found_user[i].name} </li>
-                     <li> ${response.found_user[i].company} </li>
-                     <li> ${response.found_user[i].position} </li>
-                     <li> <a onclick="sendRequest(${current_user}, ${response.found_user[i].id})">Send Connection Request</a></li>
-                     </ul>
-                   </li>`
-       }
-     html += `</ul>`
-     $('div#foundNames').append(html)
-   }
+ $('.searchNames').on('submit', function(event){
+   event.preventDefault()
+   var inserted_name = this.user_name.value
+   html = ''
+   $.ajax({
+     type: 'get',
+     url: "/users.json",
+     datatype: "json",
+     data: {"inserted_name": inserted_name},
+     success: function(response){
+       html += `<ul>`
+       for (var i=0;i<response.length;i++)
+         {
+           html +=  `<li>
+                       <ul>
+                            <div id="found-user-${response[i].id}">
+                       <li> <img src =${response[i].profile_pic}> </li>
+                       <li> ${response[i].name} </li>
+                       <li> ${response[i].company} </li>
+                       <li> ${response[i].position} </li>
+                       <li> <button id="${response[i].id}" class="addConnection" type="submit">Add Connection</button></li>
+                            </div>
+                       </ul>
+                     </li>`
+         }
+       html += `</ul>`
+       $('div#foundNames').append(html)
+     }
+   })
  })
 }
 
-function sendRequest(sender, receiver){
- $.ajax({
-   type: 'post',
-   url: "/connections.json",
-   datatype: "json",
-   data: {"user1": sender, "user2": receiver},
-   success: function(response){
-     alert("Contact Request Sent");
-   }
- })
+function sendRequest(){
+  $('.addConnection').on('click', function(event){
+    event.preventDefault()
+    debugger;
+    $(`div#found-user-${this.id}`).toggle()
+    $.ajax({
+      type: 'post',
+      url: '/connections.json',
+      datatype: 'json',
+      data: {"receiver": this.id},
+      success: function(response){
+        alert("Connections request sent!")
+      }
+    })
+  })
 }
+
+
+// $.ajax({
+//   type: 'post',
+//   url: "/connections.json",
+//   datatype: "json",
+//   data: {"user1": sender, "user2": receiver},
+//   success: function(response){
+//     alert("Contact Request Sent");
+//   }
+// })
 
 function getGraphs(){
  var request = "Need current user";
