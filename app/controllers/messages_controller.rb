@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
   def getSentMessages
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: current_user.received_messages }
+      format.json { render json: current_user.sent_messages }
     end
   end
 

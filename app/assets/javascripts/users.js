@@ -1,8 +1,15 @@
+$(document).on('turbolinks:load', function() {
+  searchNames()
+  sendRequest()
+})
+
+
 var i = 0
 
 function searchNames(){
  $('.searchNames').on('submit', function(event){
    event.preventDefault()
+   $('div#foundNames').html(' ')
    var inserted_name = this.user_name.value
    html = ''
    $.ajax({
@@ -34,9 +41,8 @@ function searchNames(){
 }
 
 function sendRequest(){
-  $('.addConnection').on('click', function(event){
+  $(document).on('click','.addConnection',function(event){
     event.preventDefault()
-    debugger;
     $(`div#found-user-${this.id}`).toggle()
     $.ajax({
       type: 'post',
@@ -50,16 +56,6 @@ function sendRequest(){
   })
 }
 
-
-// $.ajax({
-//   type: 'post',
-//   url: "/connections.json",
-//   datatype: "json",
-//   data: {"user1": sender, "user2": receiver},
-//   success: function(response){
-//     alert("Contact Request Sent");
-//   }
-// })
 
 function getGraphs(){
  var request = "Need current user";
@@ -87,35 +83,4 @@ function interate() {
 
 function goBack(i) {
  i = i - 1
-}
-
-
-function inbox() {
- var request = "Need inbox of current_user";
- $.ajax({
-   type: "get",
-   url: "/messages.json",
-   datatype: "json",
-   data: {"inbox": request},
-   success: function(response){
-     debugger;
-   }
- })
-}
-
-function outbox() {
- var request = "Need outbox of current_user";
- $.ajax({
-   type: "get",
-   url: "/messages.json",
-   datatype: "json",
-   data: {"outbox": request},
-   success: function(response){
-     debugger;
-   }
- })
-}
-
-function bringMessage(){
-
 }
