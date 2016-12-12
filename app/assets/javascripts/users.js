@@ -3,9 +3,6 @@ $(document).on('turbolinks:load', function() {
   sendRequest()
 })
 
-
-var i = 0
-
 function searchNames(){
  $('.searchNames').on('submit', function(event){
    event.preventDefault()
@@ -54,33 +51,4 @@ function sendRequest(){
       }
     })
   })
-}
-
-
-function getGraphs(){
- var request = "Need current user";
- $.ajax({
-   type: 'get',
-   url: "/graphs.json",
-   datatype: "json",
-   data: {"request": request},
-   success: function(response){
-     displayGraphs(response)
-   }
- })
-};
-
-function displayGraphs(data, i) {
- if ((i>data.length-1) || (i<0)){
-   i = 0
- }
-   // $('#displayGraph"').append(graph stuff)
-}
-
-function interate() {
- i += 1
-}
-
-function goBack(i) {
- i = i - 1
 }
