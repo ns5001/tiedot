@@ -5,7 +5,6 @@ class GraphsController < ApplicationController
 
 
 
-
   def upload
     @csv_file = params[:file].path
     @graph = current_user.graphs.build(title:params[:title], description:params[:description],

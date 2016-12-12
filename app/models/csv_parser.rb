@@ -46,6 +46,7 @@ class CsvParser < ApplicationRecord
 
  def aggreate_array
    i = 0
+   binding.pry
    self.y_coordinates.map do |row|
      row.map do |v|
        self.temp_arry[i] += v.to_i
