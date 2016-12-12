@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   resources :contacts
   resources :comments
   resources :graphs
+
+  get "/messages/received" => 'messages#getReceivedMessages'
+  get "/messages/sent" => 'messages#getSentMessages'
+  get "/connections/received" => 'connections#getReceivedRequests'
+  get "/connections/sent" => 'connections#getSentRequests'
+
   resources :messages
   resources :connections
 
@@ -14,8 +20,6 @@ Rails.application.routes.draw do
   get "/users/current_user" => 'users#getCurrentUser'
   get "/messages/chain/:id" => 'messages#messageHistory'
 
-
-  resources :users
 
   resources :users do
     resources :graphs

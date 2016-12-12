@@ -3,6 +3,9 @@ class GraphsController < ApplicationController
   before_action :validate_current_user_graphs
   require 'csv'
 
+
+
+
   def upload
     @csv_file = params[:file].path
     @graph = current_user.graphs.build(title:params[:title], description:params[:description],
