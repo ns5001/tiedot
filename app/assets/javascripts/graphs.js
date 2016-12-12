@@ -3,6 +3,7 @@ $(document).on('turbolinks:load',function(){
 
     generateCurrentUserGraphs()
     showCsv();
+    changeSelector();
 
   }else if ($('.graphs.edit').length > 0){
     genrateGraph()
@@ -25,6 +26,7 @@ $(document).on('turbolinks:load',function(){
      document.getElementById('id02').style.display='block'
    })
  }
+
 var charNum = '';
  function updateData(){
    $(document).on('submit','form',function(event){
@@ -63,7 +65,7 @@ var charNum = '';
  }
 
 function saveChart(){
-    debugger;
+    // debugger;
    charNum = $("input#graph_id").val()
   $(`#myChart${charNum}`).get(0).toBlob(function(blob) {
     saveAs(blob, "chart.png");
@@ -103,7 +105,7 @@ Graph.prototype.createGraph = function(){
     JsGraph(this.id, this.type, this.label, this.data, this.color)
 }
 
-selector = 'bar';
+var selector = 'bar';
 Graph.prototype.changeColor = function(){
   $(`#myChart${this.id}`).click(
   function(evt){
@@ -111,7 +113,6 @@ Graph.prototype.changeColor = function(){
       // graph.color = 'rgba(0,0,0,0.1)'
       $(`.edit_graph`).html('')
       var randomColor = getRandomColor()
-
       genrateGraph(randomColor, selector)
       console.log('clicked')
   }
@@ -191,7 +192,7 @@ function generateCurrentUserGraphs(input = 'bar'){
               </div><br><br>`)
             var graphLabel = JSON.parse(data[i].labels);
             var graphData = JSON.parse(data[i].data)
-            generateGraphs(graphLabel, input, graphData, i, 'rgba(255,99,132,1)')
+            generateGraphs(graphLabel, input, graphData, i, randColors)
 
           }
 
@@ -212,13 +213,20 @@ function generateCurrentUserGraph(input, id){
             `)
           var graphLabel = JSON.parse(data.labels);
           var graphData = JSON.parse(data.data)
-          generateGraphs(graphLabel, input, graphData, data.id,'rgba(255,99,132,1)')
+          generateGraphs(graphLabel, input, graphData, data.id,randColors)
 
     });
 }
+var randColors = [
+    'rgba(255, 99, 132, 0.2)',
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(255, 206, 86, 0.2)',
+    'rgba(75, 192, 192, 0.2)',
+    'rgba(153, 102, 255, 0.2)',
+    'rgba(255, 159, 64, 0.2)'
+]
 
-
-function generateCurrentUserGraph_edit(input, id,clr='rgba(255,99,132,1)'){
+function generateCurrentUserGraph_edit(input, id,clr=randColors){
   var userId = $("input#user_id").val()
   var currentGraphId = id
   $.ajax({
