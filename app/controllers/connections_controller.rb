@@ -1,7 +1,7 @@
 class ConnectionsController < ApplicationController
 
   def create
-    @connection = Connection.create(user_id: params[:user1].to_i, receiver_id: params[:user2].to_i)
+    @connection = Connection.create(user_id: current_user.id, receiver_id: params[:receiver])
     respond_to do |format|
       format.html { render :show}
       format.json { render json: @connection }

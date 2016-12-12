@@ -45,7 +45,7 @@ class UsersController < ApplicationController
    end
    respond_to do |format|
      format.html { render :show }
-     format.json { render :json => {:found_user => @users, :current_user => current_user.to_json}}
+     format.json { render :json => @users }
    end
  end
 
