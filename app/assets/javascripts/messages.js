@@ -8,6 +8,8 @@ $(document).on('turbolinks:load', function() {
     declineRequest()
     retractRequest()
     replyMessage()
+    deleteReceivedMessage()
+    deleteSentMessage()
   }
 })
 
@@ -15,10 +17,26 @@ $(document).on('turbolinks:load', function() {
    Need to make create message button work
 */
 
-function deleteMessage(){
-  $('.delete-message').on('click', function(event){
+function deleteReceivedMessage(){
+  $(document).on('click','.delete-received-message',function(event){
     event.preventDefault()
     $(`div#received-message-${this.id}`).toggle()
+    var message_id = this.id
+    $.ajax({
+      type: 'delete',
+      url: `/messages/${message_id}.json`,
+      datatype: "json",
+      success: function(response){
+        alert('Message Deleted!')
+      }
+    })
+  })
+}
+
+function deleteSentMessage(){
+  $(document).on('click','.delete-sent-message',function(event){
+    event.preventDefault()
+    $(`div#sent-message-${this.id}`).toggle()
     var message_id = this.id
     $.ajax({
       type: 'delete',
@@ -53,7 +71,7 @@ function displayReceivedRequests() {
 //
 // // This function is being loaded after the html gets appeneded to the page***
 function replyMessage() {
-    $('.reply-message').on('click', function(event){
+    $(document).on('click','.reply-message',function(event){
     event.preventDefault()
     $(`div#received-message-${this.id}`).toggle()
     var serializedData = $(this).parent().serialize()
@@ -72,7 +90,7 @@ function replyMessage() {
 
 // Data was not coming into the params in the pry in the conenctions controller
 function acceptRequest() {
-  $('.accept-request').on('click', function(event){
+  $(document).on('click','.accept-request' ,function(event){
     event.preventDefault()
     $(`div#received-request-${this.id}`).toggle()
     var request_id = this.id
@@ -89,7 +107,7 @@ function acceptRequest() {
 }
 
 function declineRequest() {
-  $('.decline-request').on('click', function(event){
+  $(document).on('click','.decline-request' ,function(event){
     event.preventDefault()
     $(`div#received-request-${this.id}`).toggle()
     var request_id = this.id
@@ -106,7 +124,7 @@ function declineRequest() {
 }
 
 function retractRequest(){
-  $('.retract-request').on('click', function(event){
+  $(document).on('click','.retract-request',function(event){
     event.preventDefault()
     $(`div#sent-request-${this.id}`).toggle()
     var request_id = this.id
@@ -159,7 +177,7 @@ function displayReceivedMessages() {
      html += `<button class="reply-message" id="${response[i].id}" type="submit">Reply</button>`
      html += `</form>`
 
-     html += `<button type="submit" class="delete-message" id="${response[i].id}">delete</button>`
+     html += `<button type="submit" class="delete-received-message" id="${response[i].id}">delete</button>`
 
      html += `</div>`
   }
@@ -171,16 +189,17 @@ function displayReceivedMessages() {
    $('.sentMessages').html('')
    for(var i=0;i<response.length;i++){
 
-     html += `<div id="${response[i].id}">
-              <p>You sent a message to ${response[i].user.name}</p>`
-     html += `<p> <img src="${response[i].user.profile_pic}"></p>`
+     html += `<div id="sent-message-${response[i].id}">
+              <p>You sent a message to ${response[i].receiver.name}</p>`
+     html += `<p> <img src="${response[i].receiver.profile_pic}"></p>`
      html += `<p><h4>${response[i].content}</h4></p>`
 
-     html += `<button type="submit" class="delete-message" id="${response[i].id}">delete</button>`
+     html += `<button type="submit" class="delete-sent-message" id="${response[i].id}">delete</button>`
 
      html += `</div>`
    }
    $('.sentMessages').append(html)
+
  }
 
   function sentRequests(response){
