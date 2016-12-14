@@ -1,18 +1,20 @@
 $(document).on('turbolinks:load',function(){
   if($('.users.show').length > 0){
-    IndexPage.userId = $("input#user_id").val();
-    IndexPage.runAll();
+    UsersShow.userId = $("input#user_id").val();
+    UsersShow.runAll();
 
   }else if ($('.graphs.edit').length > 0){
-    ShowPage.graphId = $('input#graph_id').val();
-    ShowPage.userId = $('input#user_id').val();
-    ShowPage.runAll();
+    GraphsEdit.graphId = $('input#graph_id').val();
+    GraphsEdit.userId = $('input#user_id').val();
+    GraphsEdit.type = '';
+    GraphsEdit.runAll();
 
   }
 
 });
 ////////
-  class IndexPage{
+
+  class UsersShow{
 
     static runAll(){
       this.generateGraphs('bar');
@@ -21,7 +23,6 @@ $(document).on('turbolinks:load',function(){
     }
     static generateGraphs(input){
       var user_id = this.userId
-
         $.ajax({
         type: 'get',
         url: `/users/${user_id}/graphs`,
@@ -29,7 +30,7 @@ $(document).on('turbolinks:load',function(){
           }).done(function(data) {
               for(var i =0; i<data.length; i++){
                   var graph = new Graph(data[i])
-                  graph.appendCanvasIndexPage();
+                  graph.appendCanvasUsersShow();
                   graph.appendGraph();
               }
 
@@ -51,7 +52,8 @@ $(document).on('turbolinks:load',function(){
 
   }
 ///////////
-  class ShowPage{
+var selector = 'bar';
+  class GraphsEdit{
     static runAll(){
         this.generateGraph('red','bar');
         this.updateData();
@@ -64,12 +66,10 @@ $(document).on('turbolinks:load',function(){
 
     static generateGraph(clr,tpe= 'bar'){
       var graphId = this.graphId
-
       generateCurrentUserGraphEdit(tpe, graphId,clr);
     }
     static updateData(){
       var graphId = this.graphId
-
       $(document).on('submit','form',function(event){
         event.preventDefault();
         var dataPoints = $(this).serializeArray();
@@ -105,17 +105,16 @@ $(document).on('turbolinks:load',function(){
     static changeSelector(){
       var graphId = this.graphId;
       $(document).on('change','.target',function(){
-
         var value = $(this).val();
+        selector = value;
         generateCurrentUserGraphColor(value,graphId)
-
       })
     }
     static changeColor(){
-      var graphId = ShowPage.graphId;
+      var graphId = GraphsEdit.graphId;
     $(document).on('click',`canvas#myChart${graphId}`,function(){
         randColors = getRandomColor();
-        generateCurrentUserGraphColor('bar',graphId)
+        generateCurrentUserGraphColor(selector,graphId)
         console.log('clicked')
       })
     }
@@ -171,7 +170,7 @@ $(document).on('turbolinks:load',function(){
      this.graph = '';
    }
 
-   appendCanvasIndexPage(){
+   appendCanvasUsersShow(){
      var user_id = $("input#user_id").val()
      $('.container').append(`
        <div id="${this.id}">
@@ -184,8 +183,10 @@ $(document).on('turbolinks:load',function(){
        <canvas id="myChart${this.id}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
        </div><br><br>`)
    }
-   replaceCanavasIndexPage(){
-     $(`div${this.id}`).replaceWith(
+   replaceCanavasUsersShow(){
+     var user_id = $("input#user_id").val()
+     $(`div#${this.id}`).html('');
+     $(`div#${this.id}`).append(
        ` <div id="${this.id}">
                 <select class="target">
                   <option value="bar">Bar</option>
@@ -198,7 +199,8 @@ $(document).on('turbolinks:load',function(){
 
      )
    }
-   appendCanvasShowPage(){
+   appendCanvasGraphsEdit(){
+
      $(`.edit_graph`).html('')
      $(`.edit_graph`).append(`
        <div id="${this.id}">
@@ -212,7 +214,7 @@ $(document).on('turbolinks:load',function(){
        `)
 
    }
-   replaceCanvasShowPage(){
+   replaceCanvasGraphsEdit(){
      $(`canvas#myChart${this.id}`).replaceWith(`
        <canvas id="myChart${this.id}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
        </div><br><br>
@@ -280,6 +282,7 @@ function JsGraph(id, type, labels, data, colors){
 
 }
 
+
 function generateCurrentUserGraph(input, id){
   var userId = $("input#user_id").val()
   var currentGraphId = id
@@ -291,7 +294,7 @@ function generateCurrentUserGraph(input, id){
 
         var singleGraph = new Graph(data);
         singleGraph.type = input;
-        singleGraph.replaceCanavasIndexPage()
+        singleGraph.replaceCanvasGraphsEdit()
         singleGraph.appendGraph();
     });
 }
@@ -308,7 +311,7 @@ function generateCurrentUserGraphEdit(input, id,clr=randColors){
 
           var editGraph = new Graph(data);
           editGraph.type = input;
-          editGraph.appendCanvasShowPage();
+          editGraph.appendCanvasGraphsEdit();
           editGraph.appendGraph();
     });
 }
@@ -323,7 +326,7 @@ function generateCurrentUserGraphColor(input, id,clr=randColors){
     }).done(function(data) {
           var editGraph = new Graph(data);
           editGraph.type = input;
-          editGraph.replaceCanvasShowPage();
+          editGraph.replaceCanvasGraphsEdit();
           editGraph.appendGraph();
     });
 }
@@ -339,4 +342,9 @@ function updateGraphData(data, url){
   }).done(function(data){
       alert("Graph Updated!")
   })
+}
+
+function loadOnce()
+{
+  window.location.reload();
 }
