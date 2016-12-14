@@ -31,13 +31,6 @@ class User < ApplicationRecord
   end
 
 
-  def connections
-    ary = []
-    ary << Connection.where(user_id:self.id, status:true)
-    ary << Connection.where(user2_id:self.id, status:true)
-    ary
-  end
-
  def self.connect_to_linkedin(auth, signed_in_resource=nil)
   user = User.where(:provider => auth.provider, :uid => auth.uid).first
   if user

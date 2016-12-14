@@ -1,7 +1,9 @@
 $(document).on('turbolinks:load', function() {
   searchNames()
   sendRequest()
-})
+  createMessage()
+  })
+
 
 function searchNames(){
  $('.searchNames').on('submit', function(event){
@@ -26,7 +28,11 @@ function searchNames(){
                        <li> ${response[i].company} </li>
                        <li> ${response[i].position} </li>
                        <li> <button id="${response[i].id}" class="addConnection" type="submit">Add Connection</button></li>
-                            </div>
+                       <li>
+                            <form class="createMessage" id="${response[i].id}">
+                              <input name="message_content" class="message_content" type="text">
+                              <button type="submit">Send Message</button></li>
+                            </form></div>
                        </ul>
                      </li>`
          }

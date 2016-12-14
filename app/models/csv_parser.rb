@@ -1,5 +1,5 @@
 class CsvParser < ApplicationRecord
-  attr_accessor :x_coordinates, :y_coordinates, :temp_arry
+  attr_accessor :x_coordinates, :y_coordinates, :final_array
 
  def format_data(file_name, graph_object, user)
    self.parse_lables(file_name)
@@ -11,7 +11,7 @@ class CsvParser < ApplicationRecord
    self.load_temp_array
    self.aggreate_array
 
-   graph_object.data = self.temp_arry.to_s
+   graph_object.data = self.final_array.to_s
    graph_object.save
  end
 
@@ -41,23 +41,15 @@ class CsvParser < ApplicationRecord
    for i in 1.. self.y_coordinates.length
      another_array.push(0)
    end
-   self.temp_arry = another_array
+   self.final_array = another_array
  end
 
  def aggreate_array
-   i = 0
-   binding.pry
-   self.y_coordinates.map do |row|
-     row.map do |v|
-       self.temp_arry[i] += v.to_i
-       if i == self.y_coordinates.length - 1
-         i = 0
-       else
-         i+=1
-       end
+   self.y_coordinates.each_with_index do |line|
+     line.each_with_index do |row,index|
+       self.final_array[index] += row.to_i
      end
-   end
-
+  end
  end
 
  def update_data(graph_object,updated_data)

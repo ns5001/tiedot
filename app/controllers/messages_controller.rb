@@ -24,7 +24,8 @@ class MessagesController < ApplicationController
     if params[:message_id]
       @message = Message.createReply(params)
     else
-      @message = ''
+      @message = current_user.messages.build(message_params)
+      @message.save
     end
     respond_to do |format|
       format.html { render :show }
@@ -40,14 +41,6 @@ class MessagesController < ApplicationController
     end
   end
 
-  def messageHistory
-    @chain = Message.getMessageChain(params[:id])
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @chain.to_json}
-    end
-  end
-
   def destroy
     message = Message.find_by(id: params[:id])
     message.destroy
@@ -56,7 +49,40 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:receiver, :content, :message_type, :accept, :master_message_id, :connection_id, :user_id)
+    params.require(:message).permit(:content, :receiver_id, :user_id)
   end
 
 end
+
+
+
+
+
+
+
+
+
+
+# What was work/life balance like?
+# If you could come back to flatiron, what would you focus on more?
+#
+#how did you set goals for yourself, did they work?
+#steph - Keep an open mind and apply everywhere.
+#pony foo - subscribe to this blog
+
+#get good in searching (for googling and debugging)
+
+
+# red flags:
+# not shipping a product in production
+# missing paycheck
+#
+#chris what was work-life balance like and how did it change in your second job?
+
+#bring up issues early on
+
+
+#ios
+#Data scientist
+#mobile engineer
+#front end developer - 2 years

@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  resources :contacts
-  resources :comments
-  resources :graphs
 
   get "/messages/received" => 'messages#getReceivedMessages'
   get "/messages/sent" => 'messages#getSentMessages'
@@ -12,13 +9,13 @@ Rails.application.routes.draw do
   resources :messages
   resources :connections
 
-
   root :to =>'welcome#index'
+
   get "/users/sign_out.:id" => 'users#custom_sign_out'
-  get "/users/:id/inbox/" => 'users#inbox'
+
   get 'messages/:id/message_data', to: 'messages#message_data'
-  get "/users/current_user" => 'users#getCurrentUser'
-  get "/messages/chain/:id" => 'messages#messageHistory'
+
+  get 'users/:id/inbox', to: 'users#inbox'
 
 
   resources :users do

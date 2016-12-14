@@ -3,21 +3,25 @@ $(document).on('turbolinks:load',function(){
 
     generateCurrentUserGraphs()
     showCsv();
+    changeSelector();
 
   }else if ($('.graphs.edit').length > 0){
     genrateGraph()
     updateData();
     emailGraph();
     changeSelector();
+    getRandomColor();
   }
 
 });
 
 
- function genrateGraph(clr,tpe= 'bar'){
+var selector = 'bar';
+
+ function genrateGraph(tpe= 'bar'){
    var graphId = $('input#graph_id').val()
    var userId = $('input#user_id').val()
-   generateCurrentUserGraph_edit(tpe, graphId,clr);
+   generateCurrentUserGraph_edit(tpe, graphId);
  }
 
  function showCsv(){
@@ -25,6 +29,7 @@ $(document).on('turbolinks:load',function(){
      document.getElementById('id02').style.display='block'
    })
  }
+
 var charNum = '';
  function updateData(){
    $(document).on('submit','form',function(event){
@@ -43,7 +48,6 @@ var charNum = '';
      var msg = $("#message").val();
      charNum = $("input#graph_id").val();
      var userNum = $("input#user_id").val();
-    //  var base64Chart = $(`#myChart${charNum}`).get(0).toDataURL()
      var base64Chart = sendChartToServer();
 
      var url = this.parentElement.action
@@ -57,13 +61,14 @@ var charNum = '';
            document.getElementById('id01').style.display='none'
            if(document.getElementById('id01').style.display='none'){
              alert("Graph sent!");
+           }else{
+             alert("Error");
            }
          });
    });
  }
 
 function saveChart(){
-    debugger;
    charNum = $("input#graph_id").val()
   $(`#myChart${charNum}`).get(0).toBlob(function(blob) {
     saveAs(blob, "chart.png");
@@ -82,40 +87,36 @@ function changeSelector(){
     var value = $(this).val();
     selector = value;
     var graphId = this.parentElement.id
-    generateCurrentUserGraph(value, graphId)
+    generateCurrentUserGraph(selector, graphId)
 
   })
 }
 
 
-function Graph(graphLabel, type, data, canvNumber, color){
-  this.id = canvNumber;
-  this.color = color;
-  this.type = type;
-  this.label = graphLabel;
-  this.data = data;
-  this.graph = '';
+function Graph(attributes){
+  this.id = attributes.id;
+  this.type = attributes.type
+  this.label = JSON.parse(attributes.labels);
+  this.data = JSON.parse(attributes.data);
+  this.graph = ''; // in createGraph this gets det to the graph data
   this.createGraph();
   this.changeColor();
 }
 
+
 Graph.prototype.createGraph = function(){
-    JsGraph(this.id, this.type, this.label, this.data, this.color)
+    JsGraph(this.id, this.type, this.label, this.data)
 }
 
-selector = 'bar';
+
 Graph.prototype.changeColor = function(){
   $(`#myChart${this.id}`).click(
   function(evt){
-      // myChart.getElementsAtEvent(evt)[0]._model.backgroundColor = 'rgba(0,0,0,0.1)';
-      // graph.color = 'rgba(0,0,0,0.1)'
       $(`.edit_graph`).html('')
-      var randomColor = getRandomColor()
-
-      genrateGraph(randomColor, selector)
-      console.log('clicked')
+      graphColor = getRandomColor()
+      genrateGraph(selector)
   }
-);
+ );
 }
 
 function getRandomColor() {
@@ -127,19 +128,19 @@ function getRandomColor() {
     return color;
 }
 
-function JsGraph(id, type, label, data, color){
+function JsGraph(id, type='bar', label, data, color){
   var ctx = document.getElementById(`myChart${id}`);
   myChart = new Chart(ctx, {
     title:{
      text: "Both dataSeries attached to Click events."
     },
-      type: type,
+      type: selector,
       data: {
           labels: label,
           datasets: [{
               label: label,
               data: data,
-              backgroundColor: color,
+              backgroundColor: getRandomColor(),
               borderColor: 'rgba(255,99,132,1)',
               borderWidth: 1
           }],
@@ -154,30 +155,22 @@ function JsGraph(id, type, label, data, color){
           },
       }
   });
-
-
 }
 
 
-function generateGraphs(id, label, type, data, canvasNumber){
-  graph = new Graph(id, label, type, data, canvasNumber);
-}
-
-function User (name, email){
-  this.name = name;
-  this.email = email;
+function generateGraphs(data){
+  graph = new Graph(data);
 }
 
 
-function generateCurrentUserGraphs(input = 'bar'){
+function generateCurrentUserGraphs(input = 'bar'){ // To generate all user graphs
   var user_id = $("input#user_id").val()
     $.ajax({
     type: 'get',
     url: `/users/${user_id}/graphs.json`,
     dataType: 'json'
       }).done(function(data) {
-
-          for(var i =0; i<data.length; i++){
+          for(var i = 0; i<data.length; i++){
             var z = data[i].id
             $('.container').append(`
               <div id="${z}">
@@ -187,18 +180,16 @@ function generateCurrentUserGraphs(input = 'bar'){
                         <option value="line">Line</option>
                       </select>
                 <a href="/users/${user_id}/graphs/${z}/edit">Customize Graph</a>
-              <canvas id="myChart${i}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
+              <canvas id="myChart${z}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
               </div><br><br>`)
-            var graphLabel = JSON.parse(data[i].labels);
-            var graphData = JSON.parse(data[i].data)
-            generateGraphs(graphLabel, input, graphData, i, 'rgba(255,99,132,1)')
-
+            generateGraphs(data[i])
           }
-
       });
     }
 
-function generateCurrentUserGraph(input, id){
+
+
+function generateCurrentUserGraph(input, id){ // To generate 1 graph
   var userId = $("input#user_id").val()
   var currentGraphId = id
   $.ajax({
@@ -210,15 +201,21 @@ function generateCurrentUserGraph(input, id){
           $(`div#${currentGraphId} canvas`).replaceWith(`
             <canvas id="myChart${data.id}" max-width="400" max-height="400" height="700" width="900" style= "width: 510px; height: 500px;"></canvas>
             `)
-          var graphLabel = JSON.parse(data.labels);
-          var graphData = JSON.parse(data.data)
-          generateGraphs(graphLabel, input, graphData, data.id,'rgba(255,99,132,1)')
+
+          generateGraphs(data)
 
     });
 }
+var randColors = [
+    'rgba(255, 99, 132, 0.2)',
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(255, 206, 86, 0.2)',
+    'rgba(75, 192, 192, 0.2)',
+    'rgba(153, 102, 255, 0.2)',
+    'rgba(255, 159, 64, 0.2)'
+]
 
-
-function generateCurrentUserGraph_edit(input, id,clr='rgba(255,99,132,1)'){
+function generateCurrentUserGraph_edit(input, id){
   var userId = $("input#user_id").val()
   var currentGraphId = id
   $.ajax({
@@ -237,10 +234,7 @@ function generateCurrentUserGraph_edit(input, id,clr='rgba(255,99,132,1)'){
             </div><br><br>
             `)
 
-          var graphLabel = JSON.parse(data.labels);
-          var graphData = JSON.parse(data.data)
-
-          generateGraphs(graphLabel, input, graphData, data.id, clr)
+          generateGraphs(data)
 
     });
 }

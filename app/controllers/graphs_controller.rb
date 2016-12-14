@@ -2,8 +2,7 @@ class GraphsController < ApplicationController
   before_action :authenticate_user!
   before_action :validate_current_user_graphs
   require 'csv'
-
-
+  
 
   def upload
     @csv_file = params[:file].path
@@ -27,19 +26,11 @@ class GraphsController < ApplicationController
     render :json => {"message": "success"}
   end
 
-  def new
-  end
-
-  def create
-
-  end
-
   def show
     @graph = current_user.graphs.find(params[:id])
     respond_to do |format|
       format.html { render :show }
-      format.json { render json: @graph}
-
+      format.json { render json: @graph }
     end
   end
 

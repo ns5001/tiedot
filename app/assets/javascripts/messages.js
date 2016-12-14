@@ -10,12 +10,30 @@ $(document).on('turbolinks:load', function() {
     replyMessage()
     deleteReceivedMessage()
     deleteSentMessage()
+  } else {
+  createMessage()
   }
 })
 
-/*
-   Need to make create message button work
-*/
+
+function createMessage(){
+  $(document).on('submit','.createMessage',function(event){
+    event.preventDefault()
+    var content = $('.message_content').val()
+    var receiver = this.id
+    $.ajax({
+      type: 'post',
+      url: '/messages',
+      dataType: 'json',
+      data: {"message": {"content":content, "receiver_id":receiver}},
+      success: function(response){
+        debugger
+        alert("Mesage sent!")
+      }
+    })
+  })
+}
+
 
 function deleteReceivedMessage(){
   $(document).on('click','.delete-received-message',function(event){
@@ -24,8 +42,8 @@ function deleteReceivedMessage(){
     var message_id = this.id
     $.ajax({
       type: 'delete',
-      url: `/messages/${message_id}.json`,
-      datatype: "json",
+      url: `/messages/${message_id}`,
+      dataType: "json",
       success: function(response){
         alert('Message Deleted!')
       }
@@ -68,8 +86,7 @@ function displayReceivedRequests() {
     }
   })
 }
-//
-// // This function is being loaded after the html gets appeneded to the page***
+
 function replyMessage() {
     $(document).on('click','.reply-message',function(event){
     event.preventDefault()
@@ -87,8 +104,6 @@ function replyMessage() {
   })
 }
 
-
-// Data was not coming into the params in the pry in the conenctions controller
 function acceptRequest() {
   $(document).on('click','.accept-request' ,function(event){
     event.preventDefault()

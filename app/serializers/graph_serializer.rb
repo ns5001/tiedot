@@ -1,5 +1,5 @@
 class GraphSerializer < ActiveModel::Serializer
   attributes :id, :labels, :label, :data, :data_label, :color, :title,
-             :description, :comments
+             :description
   has_one :user
 end
