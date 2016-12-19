@@ -32,7 +32,9 @@ class ConnectionsController < ApplicationController
     @connection = Connection.find_by(id: params[:id])
 
     if params[:status] == "true"
-       @connection.accept
+      @connection.accept
+      # making the connection mutual by building anothe Connection object w/ receiver and user reversed
+      Connection.create(receiver: @connection.user, user: @connection.receiver, status: true)
     else
       @connection.decline
     end
@@ -45,7 +47,7 @@ class ConnectionsController < ApplicationController
   def index
     @connections = Connection.all
     respond_to do |format|
-      format.html { render :show }
+      format.html { render :index }
       format.json { render json: @connections}
     end
   end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/messages/sent" => 'messages#getSentMessages'
   get "/connections/received" => 'connections#getReceivedRequests'
   get "/connections/sent" => 'connections#getSentRequests'
+  get "/users/friends" => 'users#get_friends'
 
   resources :messages
   resources :connections

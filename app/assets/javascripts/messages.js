@@ -15,7 +15,6 @@ $(document).on('turbolinks:load', function() {
   }
 })
 
-
 function createMessage(){
   $(document).on('submit','.createMessage',function(event){
     event.preventDefault()
@@ -33,7 +32,6 @@ function createMessage(){
     })
   })
 }
-
 
 function deleteReceivedMessage(){
   $(document).on('click','.delete-received-message',function(event){

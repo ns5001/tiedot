@@ -2,7 +2,59 @@ $(document).on('turbolinks:load', function() {
   searchNames()
   sendRequest()
   createMessage()
+  getFriends()
   })
+
+function getFriends(){
+  $('.findMyFriends').on('click', function(event) {
+    $.ajax({
+      type: 'get',
+      url: '/users/friends',
+      dataType: 'json',
+      success: function(response){
+        for (var i=0;i<response.length;i++) {
+          var new_friend = new Friend(response[i])
+          new_friend.display()
+        }
+      }
+    })
+  })
+}
+
+function Friend(object) {
+  this.name = object.name
+  this.profile_pic = object.profile_pic
+  this.company = object.company
+  this.position = object.position
+}
+
+Friend.prototype.display = function() {
+  html = ``
+  html += `You are connected with ${this.name}`
+  html += `<img src= ${this.profile_pic}>`
+  html += `${this.company}`
+  html += `${this.position}`
+  $('.myFriends').append(html)
+}
+
+// ES6
+// class Friend{
+//   constructor(object){
+//     this.name = object.name
+//     this.profile_pic = object.profile_pic
+//     this.company = object.company
+//     this.position = object.position
+//   }
+//
+//   display() {
+//     html = ``
+//     html += `You are connected with ${this.name}`
+//     html += `<img src= ${this.profile_pic}>`
+//     html += `${this.company}`
+//     html += `${this.position}`
+//     $('.myFriends').append(html)
+//   }
+// }
 
 
 function searchNames(){

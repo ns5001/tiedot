@@ -7,6 +7,12 @@ class UsersController < ApplicationController
      redirect_to root_path
    end
 
+   def get_friends
+     respond_to do |format|
+       format.html { render json: current_user.friends}
+     end
+   end
+
   def show
     @user = current_user
     respond_to do |format|

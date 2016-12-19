@@ -12,26 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20161210224603) do
 
-  create_table "comments", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "graph_id"
-  end
-
   create_table "connections", force: :cascade do |t|
     t.integer "user_id"
     t.integer "receiver_id"
     t.boolean "status",      default: false
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "company"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "csv_parsers", force: :cascade do |t|
@@ -60,15 +44,9 @@ ActiveRecord::Schema.define(version: 20161210224603) do
   create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.string  "content"
-    t.boolean "reply",             default: false
+    t.integer "reply"
     t.integer "connection_id"
     t.integer "receiver_id"
-    t.integer "master_message_id"
-  end
-
-  create_table "user_contacts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "contact_id"
   end
 
   create_table "users", force: :cascade do |t|

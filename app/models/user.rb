@@ -7,12 +7,19 @@ class User < ApplicationRecord
 
   has_many :graphs
   has_many :comments
-  has_many :user_contacts
-  has_many :contacts, through: :user_contacts
   has_many :connections
-  has_many :requests, class_name: 'Connection', foreign_key: :reciever_id
+  # has_many :all_friends, through: :connections, foreign_key: :receiver_id, source: :receiver
+  has_many :requests, class_name: 'Connection', foreign_key: :receiver_id
   has_many :messages
   has_many :received_messages, class_name: 'Message', foreign_key: :receiver_id
+
+  def accepted_connections
+    self.connections.where(status: true);
+  end
+
+  def friends
+    self.accepted_connections.map { |conn| conn.receiver }
+  end
 
   def received_requests
     Connection.where(receiver_id:self.id, status:false)
@@ -29,7 +36,6 @@ class User < ApplicationRecord
   def received_messages
     Message.where(receiver_id:self.id, reply:false)
   end
-
 
  def self.connect_to_linkedin(auth, signed_in_resource=nil)
   user = User.where(:provider => auth.provider, :uid => auth.uid).first
