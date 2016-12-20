@@ -1,19 +1,19 @@
 $(document).on('turbolinks:load',function(){
   if($('.users.show').length > 0){
+    defaultColor();
     UsersShow.userId = $("input#user_id").val();
     UsersShow.runAll();
 
   }else if ($('.graphs.edit').length > 0){
+    defaultColor();
     GraphsEdit.graphId = $('input#graph_id').val();
     GraphsEdit.userId = $('input#user_id').val();
     GraphsEdit.type = '';
     GraphsEdit.runAll();
-
   }
 
 });
 ////////
-
   class UsersShow{
 
     static runAll(){
@@ -70,7 +70,7 @@ var selector = 'bar';
     }
     static updateData(){
       var graphId = this.graphId
-      $(document).on('submit','form',function(event){
+      $('.graphs.edit').on('submit','form',function(event){
         event.preventDefault();
         var dataPoints = $(this).serializeArray();
         updateGraphData(dataPoints, this.action)
@@ -112,7 +112,7 @@ var selector = 'bar';
     }
     static changeColor(){
       var graphId = GraphsEdit.graphId;
-    $(document).on('click',`canvas#myChart${graphId}`,function(){
+    $('.graphs.edit').on('click',`canvas#myChart${graphId}`,function(){
         randColors = getRandomColor();
         generateCurrentUserGraphColor(selector,graphId)
         console.log('clicked')
@@ -227,14 +227,6 @@ var selector = 'bar';
  }
 
 /////////
-var randColors = [
-    'rgba(255, 99, 132, 0.2)',
-    'rgba(54, 162, 235, 0.2)',
-    'rgba(255, 206, 86, 0.2)',
-    'rgba(75, 192, 192, 0.2)',
-    'rgba(153, 102, 255, 0.2)',
-    'rgba(255, 159, 64, 0.2)'
-]
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
@@ -243,6 +235,17 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+}
+
+function defaultColor(){
+  randColors = [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(255, 159, 64, 0.2)'
+  ]
 }
 
 function sendChartToServer(graphid){
@@ -342,9 +345,4 @@ function updateGraphData(data, url){
   }).done(function(data){
       alert("Graph Updated!")
   })
-}
-
-function loadOnce()
-{
-  window.location.reload();
 }
