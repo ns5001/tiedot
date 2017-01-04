@@ -1,12 +1,47 @@
-<style>
-div.container {
-    width: 600px;
-    height: 1300px;
-    border-radius: 25px;
-    background: #F9F9F9;
-    padding: 20px;
-    overflow: scroll;
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<script type='text/javascript'>
+
+// (function()
+// {
+//   if( window.localStorage )
+//   {
+//     if( !localStorage.getItem('firstLoad') )
+//     {
+//       localStorage['firstLoad'] = true;
+//       window.location.reload();
+//     }
+//     else
+//       localStorage.removeItem('firstLoad');
+//   }
+// })();
+//
+// </script>
+
+<br>
+  <form class="searchNames">
+    <input id= "user_name" type="text" name="user_name" placeholder="Enter Name">
+    <button type="submit" name="button">Search</button>
+  </form>
+
+
+
+  <div id="foundNames">
+  </div>
+
+  <br>
+  <div class="upload_graph" style="padding-left: 1cm;">
+      <button id="showCsv" class="w3-btn w3-round-large w3-blue" type="button" name="button">Import CSV</button>
+  </div>
+
 <input type="hidden" name="location" value="user_show_page">
 <%= render 'graphs/graphs' %>
+
+<!--  upload graph model -->
+<div id="id02" class="w3-modal">
+    <div class="w3-container upload">
+      <span onclick="document.getElementById('id02').style.display='none'" class="w3-closebtn">&times;</span>
+        <%= render 'graphs/upload'%>
+      </div>
+  </div>
+<!--  -->

@@ -1,0 +1,10 @@
+  <%= form_tag users_graphs_upload_path(current_user), multipart: true do %>
+  Chart Title: <input type="text" name="title" value="">
+  Data Points: <input type="text" name="data_label" value="">
+  <br>
+  <br>
+  Description:<textarea name="description" rows="5" cols="40"></textarea>
+    <%= file_field_tag :file %>
+    <br>
+    <%= submit_tag "Upload CSV", class:'w3-btn w3-round-small w3-blue' %>
+    <% end%>

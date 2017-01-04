@@ -1,5 +1,54 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
 <input id="user_id" type="hidden"  value="<%=current_user.id%>">
 <input id="graph_id" type="hidden" value="<%=@graph.id%>">
-<div class="edit_graph">
+<!--  button change data-->
+<div class="button">
+  <p><button id = "changeData" class="w3-btn w3-round-large w3-blue">Change Data</button></p>
+  <br><br>
+  <p><button id="save-btn" class="w3-btn w3-round-large w3-blue">Download Chart</button></p>
+  <br><br>
 
 </div>
+<div class="right_button">
+
+  <form class="email" action="/users/<%=current_user.id%>/graphs/<%=@graph.id%>/send_mail" method="post">
+    <div class="recp">
+      <b>Recipent(s) Email:</b><input id="recipient" type="text" name="recipient" value="" placeholder="john@example.com"></input>
+    </div>
+    <br>
+    <b>Message:</b><textarea id="message" type="text" name="name" value="" rows="4" cols="20" placeholder="..."></textarea>
+    <br> <br>
+    <input id="email-btn" type="submit" name="Email" class="w3-btn w3-round-large w3-blue" value="Email">
+  </form>
+
+</div>
+<!--  -->
+<div class="outer" style= "width: 610px; height: 600px; margin-left:auto; margin-right:auto;">
+  <div class="edit_graph">
+
+  </div>
+</div>
+
+
+<div id="data">
+  <form class="dataUpdate" action="/users/<%=current_user.id%>/graphs/<%=@graph.id%>" method="patch">
+    <table id="table_data">
+      <tr id="header">
+
+      </tr>
+      <tr id="data_values">
+
+      </tr>
+    </table>
+
+  </form>
+
+</div>
+
+<!-- Pop up Modal -->
+<div id="id01" class="w3-modal">
+      <div class="loader"></div>
+  </div>
+<!--  -->
