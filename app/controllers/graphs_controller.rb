@@ -1,6 +1,6 @@
 class GraphsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :validate_current_user_graphs
+  # before_action :authenticate_user!
+  # before_action :validate_current_user_graphs
   require 'csv'
 
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :validate_current_user
+  # before_action :authenticate_user!
+  # before_action :validate_current_user
 
    def new
    end
