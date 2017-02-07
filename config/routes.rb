@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get "/users/current_user" => 'users#getCurrentUser'
   get "/messages/chain/:id" => 'messages#messageHistory'
 
-
   resources :users do
     resources :graphs
   end
