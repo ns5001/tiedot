@@ -1,0 +1,179 @@
+/* line 6, /Users/NaveedShah/Desktop/tiedot/app/assets/stylesheets/graphs.scss */
+.w3-btn {
+  width: 150px;
+}
+
+/* line 8, /Users/NaveedShah/Desktop/tiedot/app/assets/stylesheets/graphs.scss */
+div.edit_graph {
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+  background: #F9F9F9;
+  padding: 20px;
+}
+
+/* line 19, /Users/NaveedShah/Desktop/tiedot/app/assets/stylesheets/graphs.scss */
+div.button {
+  position: fixed;
+  /* set position */
+  top: 100px;
+  right: 100px;
+  /* must have dimension */
+  width: 100px;
+  height: 500px;
+}
+
+/* line 30, /Users/NaveedShah/Desktop/tiedot/app/assets/stylesheets/graphs.scss */
+div.right_button {
+  position: fixed;
+  /* set position */
+  top: 100px;
+  left: 100px;
+  /* must have dimension */
+  width: 100px;
+  height: 500px;
+}
+
+/* line 42, /Users/NaveedShah/Desktop/tiedot/app/assets/stylesheets/graphs.scss */
+table, td {
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*loader*/
+/* line 49, /Users/NaveedShah/Desktop/tiedot/app/assets/stylesheets/graphs.scss */
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+header {
+    position: relative;
+    min-height: auto;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    background-color: #c9c9c9;
+    background-image: url('https://splashbase.s3.amazonaws.com/lifeofpix/regular/Life-of-Pix-free-stock-photos-Slate-Stone-Xeromatic-1440x953.jpg');
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+header .header-content {
+    position: relative;
+    width: 100%;
+    padding: 100px 15px;
+    text-align: center;
+    z-index: 2;
+}
+
+header .header-content .inner h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.cursive {
+    font-family: 'Dancing Script', cursive;
+    text-transform: none;
+}
+
+header .header-content .inner h1 {
+    font-size: 100px;
+    font-weight: 100;
+}
+
+#video-background {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+}
+
+#video-background.collapsing {
+  display:none;
+}
+
+footer {
+    background-color:#2d2d2d;
+}
+/* line 5, /Users/NaveedShah/Desktop/tiedot/app/assets/stylesheets/users.scss */
+div.container {
+  width: 600px;
+  height: 1300px;
+  border-radius: 25px;
+  background: #F9F9F9;
+  padding: 20px;
+  overflow: scroll;
+}
+
+/* line 14, /Users/NaveedShah/Desktop/tiedot/app/assets/stylesheets/users.scss */
+div.upload {
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  height: 300px;
+  border-radius: 25px;
+  background: #F9F9F9;
+  padding: 20px;
+}
+
+/* line 27, /Users/NaveedShah/Desktop/tiedot/app/assets/stylesheets/users.scss */
+div.foundNames {
+  width: 600px;
+  height: 1300px;
+  float: left;
+  border-radius: 25px;
+  background: #F9F9F9;
+  padding: 20px;
+  overflow: scroll;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
