@@ -1,5 +1,6 @@
 <body class="<%= controller_name %> <%= action_name %>">
-<%= form_tag songs_upload_path, multipart: true do %>
+  <%= flash[:message] %>
+<%= form_tag, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Upload CSV" %>
 </body>

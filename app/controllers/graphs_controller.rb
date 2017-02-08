@@ -3,15 +3,16 @@ class GraphsController < ApplicationController
   # before_action :validate_current_user_graphs
   require 'csv'
 
-
-
-
   def upload
-    @csv_file = params[:file].path
-    @graph = current_user.graphs.build(title:params[:title], description:params[:description],
-    data_label:params[:data_label])
-    csv_parser = CsvParser.new
-    csv_parser.format_data(@csv_file, @graph, current_user)
+    if params[:file]
+      @csv_file = params[:file].path
+      @graph = current_user.graphs.build(title:params[:title], description:params[:description],
+      data_label:params[:data_label])
+      csv_parser = CsvParser.new
+      csv_parser.format_data(@csv_file, @graph, current_user)
+    else
+      flash[:message] = "Please upload a CSV file"
+    end
     redirect_to user_path(current_user)
   end
 
