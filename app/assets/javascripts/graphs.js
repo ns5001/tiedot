@@ -172,7 +172,6 @@ var selector = 'bar';
 
    appendCanvasUsersShow(){
      var user_id = $("input#user_id").val()
-     $('h1#empty').html('')
      $('.container').append(`
        <div id="${this.id}">
                <select class="target">
