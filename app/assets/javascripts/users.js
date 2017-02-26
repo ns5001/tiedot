@@ -15,23 +15,30 @@ function searchNames(){
      datatype: "json",
      data: {"inserted_name": inserted_name},
      success: function(response){
-       html += `<ul>`
-       for (var i=0;i<response.length;i++)
-         {
-           html +=  `<li>
-                       <ul>
-                            <div id="found-user-${response[i].id}">
-                       <li> <img src =${response[i].profile_pic}> </li>
-                       <li> ${response[i].name} </li>
-                       <li> ${response[i].company} </li>
-                       <li> ${response[i].position} </li>
-                       <li> <button id="${response[i].id}" class="addConnection" type="submit">Add Connection</button></li>
-                            </div>
-                       </ul>
-                     </li>`
-         }
-       html += `</ul>`
-       $('div#foundNames').append(html)
+       if (response.length > 0) {
+         if (response[0] == "adding themself") {
+           $('div#foundNames').append("You can't add yourself!")
+         }else{
+           for (var i=0;i<response.length;i++)
+             {
+               html +=  `
+                           <br>
+                                <div id="found-user-${response[i].id}">
+                           <ul> <img class="round-image-50" src =${response[i].profile_pic}> </ul><br>
+                           <ul> ${response[i].first_name} ${response[i].last_name}</ul>
+                           <ul> ${response[i].company} </ul>
+                           <ul> ${response[i].position} </ul>
+                           <ul> <button id="${response[i].id}" class="addConnection" type="submit">Add Connection</button></ul>
+                                </div>
+                           </ul>
+                         <br>
+                         `
+             }
+           $('div#foundNames').append(html)}
+      } else {
+        $('div#foundNames').html("")
+        $('div#foundNames').append(`No user found named ${inserted_name}`)
+      }
      }
    })
  })

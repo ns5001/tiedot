@@ -4,26 +4,68 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, autofocus: true, :placeholder => "Email", :required => true%>
   </div>
+  <br>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.text_field :first_name, :placeholder => "First Name", :required => true %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.text_field :last_name, :placeholder => "Last Name", :required => true %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label 'Gender:' %><br>
+    <%= f.label 'Male' %>
+    <%= f.radio_button :gender, 'Male', :checked => true%>
+    <%= f.label 'Female' %>
+    <%= f.radio_button :gender, 'Female'%>
+    <%= f.label 'Other' %>
+    <%= f.radio_button :gender, 'Other'%>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label "Date of Birth - Must be 18 or Older" %><br>
+    <%= f.date_field :dob, :placeholder => "Date of Birth", :max => "1999-01-01", :required => true %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.text_field :company, :placeholder => "Company", :required => true %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.text_field :position, :placeholder => "Position", :required => true %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.file_field :profile_pic, :placeholder => "Profile Picture"%>
+  </div>
+  <br>
+
+  <div class="field">
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <%= f.password_field :password, autocomplete: "off", :placeholder => "Password", :required => true %>
+  </div><br>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "Password Confirmation", :required => true %>
   </div>
+  <br>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+<br>
 
 <%= render "devise/shared/links" %>
