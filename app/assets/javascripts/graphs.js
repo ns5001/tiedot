@@ -11,11 +11,9 @@ $(document).on('turbolinks:load',function(){
     GraphsEdit.type = '';
     GraphsEdit.runAll();
   }
-
 });
 ////////
   class UsersShow{
-
     static runAll(){
       this.generateGraphs('bar');
       this.showCsv();
@@ -28,6 +26,7 @@ $(document).on('turbolinks:load',function(){
         url: `/users/${user_id}/graphs`,
         dataType: 'json'
           }).done(function(data) {
+            debugger;
               for(var i =0; i<data.length; i++){
                   var graph = new Graph(data[i])
                   graph.appendCanvasUsersShow();
